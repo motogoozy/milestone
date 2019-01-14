@@ -5,7 +5,7 @@
 .background>p {
    position: fixed;
    width: 546px;
-   top: 27%;
+   top: 30%;
    left: 22%;
    transform: translate(-50%, -50%);
    z-index: 11;
