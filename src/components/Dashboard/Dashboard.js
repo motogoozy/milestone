@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Dashboard.css';
 import Card from '../Card/Card';
-import AddButton from '../AddButton/AddButton';
+import AddButton from '../Dashboard/AddButton/AddButton';
+import HeaderMain from '../HeaderMain/HeaderMain';
 
 
 class Dashboard extends Component {
@@ -26,7 +27,6 @@ class Dashboard extends Component {
    }
 
 
-
    render() {
       const displayCards = this.state.milestones.map(milestone => {
          return(
@@ -47,19 +47,8 @@ class Dashboard extends Component {
 
       return (
          <div className='dashboard'>
-            <div className='header-nav'>
-                  <div className='navbar'>
-                     <div className='brand-container'>
-                        <img src={stoneIcon} alt="" className='icon'/>
-                        <p className='brand' >Milestone</p>
-                     </div>
-                        <div className='logout-button-container'>
-                           <Link to='/' className='logout-button' >
-                              Logout
-                           </Link>
-                        </div>
-                  </div>
-            </div>
+            
+            < HeaderMain />
 
             <div className='body' >
             
