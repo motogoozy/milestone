@@ -5,8 +5,8 @@
 .background>p {
    position: fixed;
    width: 546px;
-   top: 30%;
-   left: 22%;
+   top: 26%;
+   left: 24%;
    transform: translate(-50%, -50%);
    z-index: 11;
    font-family: 'Muli', sans-serif;
