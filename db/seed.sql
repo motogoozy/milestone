@@ -11,8 +11,8 @@ select * from users;
 -- CREATE POSTS TABLE
 CREATE TABLE milestones (
 id SERIAL PRIMARY KEY,
-title VARCHAR(60),
-description VARCHAR(200),
+title VARCHAR(50),
+description VARCHAR(50),
 date VARCHAR(10),
 location VARCHAR(40),
 img TEXT,
