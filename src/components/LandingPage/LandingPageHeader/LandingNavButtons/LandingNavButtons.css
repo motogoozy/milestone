@@ -1,0 +1,10 @@
+.login-button:hover {
+   color: teal; 
+}
+
+/* iPad Size */
+@media (max-width: 768px) {
+   .nav-buttons {
+      margin-left: 50px;
+   }
+}
