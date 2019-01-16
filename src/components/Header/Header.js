@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import WelcomeButtons from '../Header/WelcomeButtons/WelcomeButtons';
+import LandingNavButtons from './LandingNavButtons/LandingNavButtons';
 import './Header.css';
 
 
@@ -11,6 +11,7 @@ class Header extends Component {
       const user = {
          // id:1
       };
+
       return (
          <div className='navbar'>
             <div className='brand-container'>
@@ -18,17 +19,9 @@ class Header extends Component {
                <p className='brand' >Milestone</p>
             </div>
             
-            {
-               !user.id ? (
-                  <div>
-                     < WelcomeButtons />
-                  </div>
-               ) :
-               <div className='logout-button-container'>
-                  <p className='logout-button' >Logout</p>
-               </div>
-            }
-            
+            <div>
+               < LandingNavButtons />
+            </div>
          </div>
       );
    }
