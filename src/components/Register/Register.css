@@ -1,0 +1,39 @@
+.main {
+   display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-cent;
+	align-items: center;
+   align-content: center;
+}
+
+.stone-icon {
+   width: 73px;
+   height: auto;
+   margin-right: -7px;
+}
+
+.register-menu {
+   height: 400px;
+   width: 400px;
+   background-color: rgba(29, 28, 28, 0.678);
+   position: relative;
+   top: 200px;
+   border-radius: 25px;
+   display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+   align-content: stretch;
+   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+}
+
+.register-text {
+   color: white;
+   text-transform: uppercase;
+}
+
+.register-input {
+   margin: 10px;
+}
