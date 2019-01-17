@@ -9,7 +9,7 @@ class LandingNavButtons extends Component {
       return (
          <div className='nav-buttons'>
                <div className='login-button-container'>
-                  <Link to='/' style={{textDecoration: 'none'}} className='login-button'>
+                  <Link to='/login' style={{textDecoration: 'none'}} className='login-button'>
                      <p >Login</p>
                   </Link>
                </div>
