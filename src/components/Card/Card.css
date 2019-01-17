@@ -20,12 +20,9 @@
 	justify-content: center;
 	align-items: stretch;
 	align-content: stretch;
+	
 }
 
-.card-header>p {
-	margin: 5px;
-	text-align: center;
-}
 
 .card-title {
 	font-family: 'Muli', sans-serif;
@@ -34,12 +31,16 @@
 	color: #222121;
 	font-size: 20px;
 	letter-spacing: 0.65px;
+	margin-bottom: 1px;
 }
+
 .card-text {
 	font-family: 'Muli', sans-serif;
 	font-weight: 400;
 	color: #222121;
 	font-size: 16px;
+	text-align: center;
+	margin: 0;
 }
 
 .image-container {
@@ -59,11 +60,14 @@
 	width: 100%;
 	height: auto;
 	align-content: center;
+	margin-top: 8px;
+	margin-bottom: 8px;
 }
 
 .description-container {
 	width: 90%;
-   text-align: center;
+	text-align: center;
+	margin-top: 8px;
 }
 
 .button-container {
@@ -73,7 +77,6 @@
 	justify-content: space-around;
 	align-items: stretch;
 	align-content: space-between;
-	margin-top: 48px;
 }
 
 .lower-button {
@@ -90,57 +93,3 @@
 }
 
 /* MEDIA QUERIES */
-@media(max-width: 1480px) {
-	.card {
-		width: 350px;
-		height: 500px;
-		background-color: rgba(168, 174, 177, 0.75);
-		margin: 20px;
-		display: flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
-		justify-content: flex-start;
-		align-items: center;
-		align-content: stretch;
-		border-radius: 25px;
-		box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
-	}
-	
-	.card-header {
-		display: flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
-		justify-content: center;
-		align-items: stretch;
-		align-content: stretch;
-	}
-	
-	.card-header>p {
-		margin: 5px;
-		text-align: center;
-	}
-
-	.image-container {
-		display: flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
-		justify-content: flex-start;
-		align-items: center;
-		align-content: stretch;
-		width: 90%;
-		max-height: 330px;
-		overflow: scroll;
-	}
-	
-	
-	.img {
-		width: 100%;
-		height: auto;
-		align-content: center;
-	}
-	
-	.description-container {
-		width: 90%;
-		text-align: center;
-	}
-}
