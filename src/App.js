@@ -14,4 +14,6 @@ class App extends Component {
   }
 }
 
+// const googleAPIkey = 'AIzaSyANuNYquZpuJZaIlwOUtz2rAsTgspHXEQE';
+
 export default App;
