@@ -24,7 +24,7 @@ module.exports = {
 
       const userArr = await db.find_user({ username: username });
       if(!userArr[0]) {
-         return res.status(200).send({message: 'Username not found.'})
+         return res.status(200).send({message: 'User not found.'})
       }
       const result = bcrypt.compareSync(password, userArr[0].hash)
       if (!result) { //if result is falsy, passwords don't match up
