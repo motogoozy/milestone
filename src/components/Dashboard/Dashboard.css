@@ -1,81 +1,11 @@
-
-/* HEADER */
-.header-nav {
-   width: 100%;
-	height: 50px;
-   background-color: #9c9a99;
-	padding-top: .5em;
-	padding-bottom: .5em;
-	border: 1px solid #a2a2a2;
-	box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
-	position: fixed;
-   z-index: 10;
-   display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: space-around;
-	align-items: center;
-	align-content: center;
-}
-
-.nav-buttons {
-   display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: space-around;
-	align-items: center;
-	align-content: center;
-}
-
-.brand-container {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: space-around;
-	align-items: center;
-	align-content: center;
-}
-
-.icon {
-	height: auto;
-	width: 42px;
-	margin-right: 7px;
-	z-index: 1;
-}
-
-.brand {
-	text-transform: uppercase;
-	font-family: 'Muli', sans-serif;
-	color: #4c4c4c;
-	letter-spacing: 3px;
-	font-size: 28px;
-	margin-left: 6px;
-}
-
-
-.brand-container {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: space-around;
-	align-items: center;
-	align-content: center;
-}
-
-.logout-button {
-   font-family: 'Muli', sans-serif;
-   color: #4C4C4C;
-   letter-spacing: 1.5px;
-   text-transform: uppercase;
-   font-weight: bold;
-   font-size: 15px;
-   text-decoration: none !important;
-}
-
-
 /* BODY */
+.dashboard {
+	height: 100vh;
+}
+
 .body {
-   height: 100vh;
+	width: 100vw;
+	height: 100vh;
    background: radial-gradient(rgb(221, 185, 162), rgb(193, 202, 207));
    display: flex;
 	flex-direction: column;
@@ -89,7 +19,6 @@
 .my-milestones {
    position: fixed;
    top: 10%;
-   z-index: 10;
 }
 .my-milestones>h2 {
    font-family: 'Muli', sans-serif;
@@ -108,9 +37,9 @@
 	justify-content: flex-start;
 	align-items: stretch;
    align-content: stretch;
-   position: relative;
-   top: 11.5%;
-   right: -46%;
+	position: fixed;
+	top: 11.5%;
+	right: 2%;
    z-index: 10;
 }
 

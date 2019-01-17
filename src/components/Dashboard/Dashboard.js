@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getUserData } from '../../ducks/reducer';
 import axios from 'axios';
 import './Dashboard.css';
 import Card from '../Card/Card';
@@ -11,8 +13,8 @@ class Dashboard extends Component {
    constructor() {
       super();
       this.state = {
-         user_id: 0,
-         milestones: [],
+         user_id: 1,
+         milestones: []
       }
    }
 
@@ -43,7 +45,6 @@ class Dashboard extends Component {
          )
       })
 
-      const stoneIcon = 'http://cdn.onlinewebfonts.com/svg/img_498163.png'
 
       return (
          <div className='dashboard'>
@@ -51,20 +52,19 @@ class Dashboard extends Component {
             < HeaderMain />
 
             <div className='body' >
-            
+
                <div className='add-input-container'>
                   <div className='add-button'>
-                     < AddButton />
+                     <Link to='/add' >
+                        < AddButton />
+                     </Link>
                   </div>
                </div>
-
-               
 
                <div className='card-container' >
                   <div className='my-milestones'>
                      <h2>My Milestones</h2>
                   </div>
-
                   { displayCards }
                   { displayCards }
                   { displayCards }
@@ -79,4 +79,7 @@ class Dashboard extends Component {
    }
 }
 
-export default Dashboard;
+
+const mapStateToProps = (reduxState) => reduxState;
+
+export default connect(mapStateToProps, {getUserData})(Dashboard);
