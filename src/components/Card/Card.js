@@ -1,19 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Card.css';
-import EditButton from '../Dashboard/EditButton/EditButton';
 
 
 function Card (props) {
    const { title, description, date, location, img } = props
    console.log(`Displaying milestone: ${props.id}`)
+   const googleMapsURL = `https://www.google.com/maps/place/${location}`;
+
       return (
          <div className='card'>
 
                <div className='card-header'>
                   <p className='card-title'>{title}</p>
                   <p className='card-text'>{date}</p>
-                  <p className='card-text'>{location}</p>
+                  <a href={googleMapsURL} className='card-text'>{location}</a>
                </div>
 
             <div className='image-container' >
@@ -25,12 +26,11 @@ function Card (props) {
             </div>
 
             <div className='button-container'>
-               <Link to='' style={{textDecoration: 'none'}} className='lower-button'>
+               <Link to='/edit' style={{textDecoration: 'none'}} className='lower-button'>
                   <p>Edit</p>
                </Link>
-               <Link to='' style={{textDecoration: 'none'}} className='lower-button'>
-                  <p>Delete</p>
-               </Link>
+               
+                  <p className='lower-button' >Delete</p>
             </div>
          </div>
       )
