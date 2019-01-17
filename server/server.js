@@ -10,6 +10,8 @@ const { SERVER_PORT, CONNECTION_STRING, SECRET } = process.env;
 const app = express();
 
 //MIDDLEWARE
+app.use(express.json());
+
 app.use(session({
    secret: SECRET,
    resave: false,
@@ -26,8 +28,9 @@ massive(CONNECTION_STRING).then(db => {
 
 
 //AUTH ENDPOINTS
-// app.post('/auth/register', authCtrl.register) //register
 // app.post('/auth/login', authCtrl.login) //login
+// app.post('/auth/register', authCtrl.register) //register
 
 //MAIN ENDPOINTS
-app.get(`/api/milestones/:user_id`, mainController.getAll); //Gets all of the user's milestones
+app.get(`/api/milestones/:user_id`, mainController.getAll); //Gets all of the user's milestones (req.params)
+app.post(`/api/milestones/add`, mainController.addMilestone) //Adds a post to database (req.body)
