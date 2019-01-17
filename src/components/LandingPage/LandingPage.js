@@ -6,17 +6,18 @@ import './LandingPage.css';
 var selectionStyle = {
    backgroundImage: `url(${BackgroundImage})`,
    backgroundSize: 'contain',
+   height: '1400px',
    width: '100vw',
-   height: 'auto',
+   backgroundRepeat: 'no-repeat',
+   position: 'fixed'
 }
 
 class LandingPage extends Component {
    render() {
       return (
-         <div className='background' >
+         <div className='background' style={selectionStyle} >
          < LandingPageHeader />
             <p>A simple way to remember life's special moments.</p>
-            <img src={BackgroundImage} style={selectionStyle} alt="" className='img' />
          </div>
       );
    }

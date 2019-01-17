@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import LandingNavButtons from './LandingNavButtons/LandingNavButtons';
 import './LandingPageHeader.css';
+import stoneIcon from '../../../assets/milestoneIcon2.png'
 
 
 
 class LandingPageHeader extends Component {
 
    render() {
-      const stoneIcon = 'http://cdn.onlinewebfonts.com/svg/img_498163.png';
-      const user = {
-         // id:1
-      };
 
       return (
          <div className='navbar'>
