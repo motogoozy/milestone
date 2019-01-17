@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import './RegisterButton.css';
@@ -22,13 +23,14 @@ function RegisterButton(props) {
    const { classes } = props;
    return (
       <div>
-         <Button 
-            variant="contained" 
-            color="secondary" 
-            className={classes.signInButton}
-            >
-         Sign Up
-         </Button>
+         <Link to='/register' style={{textDecoration: 'none'}}>
+            <Button
+               variant="contained"
+               color="secondary"
+               className={classes.signInButton}>
+               Sign Up
+            </Button>
+         </Link>
       </div>
    );
    }
