@@ -16,7 +16,7 @@ description VARCHAR(50),
 date VARCHAR(10),
 location VARCHAR(40),
 img TEXT,
-author_id INTEGER references users(id)
+author_id INTEGER REFERENCES users(id)
 );
 
 
