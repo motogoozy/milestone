@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import BackgroundImage from '../../assets/background.png';
 import stoneIcon from '../../assets/milestoneIcon2.png';
 import './Login.css';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 
 
@@ -16,6 +18,36 @@ var selectionStyle = {
 }
 
 class Login extends Component {
+   constructor(props) {
+      super(props);
+      this.state = {
+         username: '',
+         password: ''
+      }
+   }
+
+   async login() {
+      const { username, password } = this.state;
+      const res = await axios.post(`/auth/login`, { username: username, password: password })
+      console.log(res.data)
+      if (res.data.loggedIn) {
+         await Swal(
+            'Woohoo!',
+            'You have successfully logged in.',
+            'success'
+         )
+         this.props.history.push('/dashboard')
+      } else {
+         await Swal({
+            type: 'error',
+            title: 'Oops!',
+            text: res.data.message
+         })
+      }
+   }
+
+
+
    render() {
       return (
          <div className='main' style={selectionStyle}>
@@ -32,9 +64,12 @@ class Login extends Component {
 
             <div className='login-menu'>
                <h2 className='login-text' >Login</h2>
-               <input type="text" placeholder='Username' className='input' />
-               <input type="text" placeholder='Password' className='input' />
-               <button className='input' >Submit</button>
+               <input onChange={ (e) => this.setState({username: e.target.value}) } type="text" placeholder='Username' className='input' />
+               <input onChange={ (e) => this.setState({password: e.target.value}) } type="text" placeholder='Password' className='input' />
+               <div>
+                  <button onClick={ () => this.props.history.push('/')} >Back</button>
+                  <button onClick={ () => this.login() } className='input' >Submit</button>
+               </div>
             </div>
          </div>
       );
