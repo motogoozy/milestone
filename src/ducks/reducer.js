@@ -7,10 +7,10 @@ const GET_USER_DATA = 'GET_USER_DATA'
 
 
 //ACTION CREATORS
-export function getUserData(userInfo) {
+export function getUserData(userData) {
    return {
       type: GET_USER_DATA,
-      payload: userInfo
+      payload: userData
    }
 }
 
