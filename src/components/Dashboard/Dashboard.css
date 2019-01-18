@@ -56,6 +56,12 @@
    padding-top: 15%;
 }
 
+.no-milestones-text {
+	font-family: 'Muli', sans-serif;
+	color: rgb(83, 81, 81);
+	font-size: 20px;
+}
+
 
 /* MEDIA QUERIES */
 
