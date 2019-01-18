@@ -9,7 +9,6 @@ class AddMilestone extends Component {
    constructor() {
       super();
       this.state = {
-         user_id: 1,
          titleInput: '',
          descriptionInput: '',
          dateInput: '',
@@ -19,10 +18,9 @@ class AddMilestone extends Component {
    }
 
    async addMilestone() {
-      const { user_id, titleInput, descriptionInput, dateInput, locationInput, imgInput } = this.state;
-      const response = await axios.post('/api/milestones/add', { user_id: user_id, title: titleInput, description: descriptionInput, date: dateInput, location: locationInput, img: imgInput })
+      const { titleInput, descriptionInput, dateInput, locationInput, imgInput } = this.state;
+      const response = await axios.post('/api/milestones/add', { title: titleInput, description: descriptionInput, date: dateInput, location: locationInput, img: imgInput })
       this.props.history.push('/dashboard');
-      console.log(response);
    }
 
 
