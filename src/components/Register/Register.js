@@ -23,13 +23,11 @@ class Register extends Component {
       const { username, password, profile_pic } = this.state;
       const res = await axios.post(`/auth/register`, { username: username, password: password, profile_pic: profile_pic })
       if (res.data.loggedIn) {
-         await Swal(
             await Swal(
                'Welcome!',
                'You have successfully created an account.',
                'success'
             )
-         )
          this.props.history.push('/dashboard')
       } else {
          await Swal({
