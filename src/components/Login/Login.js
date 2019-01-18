@@ -1,21 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import BackgroundImage from '../../assets/background.png';
 import stoneIcon from '../../assets/milestoneIcon2.png';
 import './Login.css';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import TextField from '@material-ui/core/TextField';
 
 
-
-var selectionStyle = {
-   backgroundImage: `url(${BackgroundImage})`,
-   backgroundSize: 'contain',
-   height: '1400px',
-   width: '100vw',
-   backgroundRepeat: 'no-repeat',
-   position: 'fixed'
-}
 
 class Login extends Component {
    constructor(props) {
@@ -47,10 +38,9 @@ class Login extends Component {
    }
 
 
-
    render() {
       return (
-         <div className='main' style={selectionStyle}>
+         <div className='main'>
             <div className='navbar'>
                <Link to='/' style={{textDecoration: 'none'}}>
                   <div className='brand-container'>
@@ -64,11 +54,24 @@ class Login extends Component {
 
             <div className='login-menu'>
                <h2 className='login-text' >Login</h2>
-               <input onChange={ (e) => this.setState({username: e.target.value}) } type="text" placeholder='Username' className='input' />
-               <input onChange={ (e) => this.setState({password: e.target.value}) } type="text" placeholder='Password' className='input' />
+               <TextField
+                  id="standard-name"
+                  label="Username"
+                  value={this.state.username}
+                  onChange={ (e) => this.setState({username: e.target.value}) }
+                  margin="normal"
+               />
+               <TextField
+                  id="standard-password-input"
+                  label="Password"
+                  value={this.state.password}
+                  onChange={ (e) => this.setState({password: e.target.value}) }
+                  margin="normal"
+                  type="password"
+               />
                <div>
-                  <button onClick={ () => this.props.history.push('/')} >Back</button>
-                  <button onClick={ () => this.login() } className='input' >Submit</button>
+                  <button onClick={ () => this.props.history.push('/')} className='button'>Back</button>
+                  <button onClick={ () => this.login() } className='button' >Submit</button>
                </div>
             </div>
          </div>
