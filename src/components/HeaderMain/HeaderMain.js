@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import './HeaderMain.css';
 import stoneIcon from '../../assets/milestoneIcon2.png';
+import axios from 'axios';
 
 class HeaderMain extends Component {
+
+   async logout() {
+      const res = await axios.get('/auth/logout')
+      this.props.history.push('/')
+   }
+
    render() {
 
       return (
@@ -16,9 +24,7 @@ class HeaderMain extends Component {
                   </div>
                </Link>
                <div className='logout-button-container'>
-                     <Link to='/' className='logout-button' >
-                        Logout
-                     </Link>
+                  <p onClick={() => this.logout()} className='logout-button'>Logout</p>  
                </div>
             </div>
          </div>
@@ -26,4 +32,4 @@ class HeaderMain extends Component {
    }
 }
 
-export default HeaderMain;
+export default withRouter(HeaderMain);
