@@ -15,7 +15,7 @@ function Card (props) {
                <div className='card-header'>
                   <p className='card-title'>{title}</p>
                   <p className='card-text'>{date}</p>
-                  <a href={googleMapsURL} className='card-text'>{location}</a>
+                  <a href={googleMapsURL} className='card-text' target='_blank' rel="noopener noreferrer" >{location} </a>
                </div>
 
             <div className='image-container' >

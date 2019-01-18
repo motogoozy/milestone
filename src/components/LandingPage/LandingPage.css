@@ -1,5 +1,10 @@
 .background {
-   position: relative;
+   background-image: url(../../assets/background.png);
+   background-size: cover;
+   height: 1200px;
+   width: 100vw;
+   background-repeat: no-repeat;
+   position: fixed;
 }
 
 .background>p {
