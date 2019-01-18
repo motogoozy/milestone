@@ -7,7 +7,7 @@ module.exports = {
 
       const userArr = await db.find_user({ username });
       if (userArr.length >=1) {
-         return res.status(200).send({message: 'Username already taken. Please enter a different username.'})
+         return res.status(200).send({message: 'Username already taken. Please enter a different username.', loggedIn: false})
       }
 
       const salt = bcrypt.genSaltSync(10);
