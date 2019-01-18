@@ -59,3 +59,8 @@
    font-size: 15px;
    text-decoration: none !important;
 }
+
+.logout-button:hover {
+	color: teal;
+	cursor: pointer;
+}
