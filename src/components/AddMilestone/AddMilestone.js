@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './AddMilestone.css';
 import HeaderMain from '../HeaderMain/HeaderMain';
+import TextField from '@material-ui/core/TextField';
 
 
 class AddMilestone extends Component {
@@ -34,34 +35,46 @@ class AddMilestone extends Component {
                   <h2>Add Milestone</h2>
                </div>
 
-               <div className='input-menu' >
-                  <Link to='/dashboard'><button>Back</button></Link>
-                  <input 
-                     type="text" 
-                     className='input-box' 
-                     placeholder='Title (max 50 char.)'
-                     onChange={(e) => this.setState({titleInput: e.target.value})} />
-                  <input 
-                     type="text" 
-                     className='input-box' 
-                     placeholder='Description (max 50 char.)'
-                     onChange={(e) => this.setState({descriptionInput: e.target.value})} />
-                  <input 
-                     type="text" 
-                     className='input-box' 
-                     placeholder='Date (mm/dd/yyyy)'
-                     onChange={(e) => this.setState({dateInput: e.target.value})} />
-                  <input 
-                     type="text" 
-                     className='input-box' 
-                     placeholder='Location (max 50 char.)'
-                     onChange={(e) => this.setState({locationInput: e.target.value})} />
-                  <input 
-                     type="text" 
-                     className='input-box' 
-                     placeholder='Image URL'
-                     onChange={(e) => this.setState({imgInput: e.target.value})} />
-                  <button onClick={() => this.addMilestone()} >Add</button>
+               <div className='input-box' >
+                  <TextField
+                  id="title"
+                  label="Title"
+                  value={this.state.titleInput}
+                  onChange={ (e) => this.setState({titleInput: e.target.value}) }
+                  margin="normal"
+                  />
+                  <TextField
+                  id="description"
+                  label="Description"
+                  value={this.state.descriptionInput}
+                  onChange={ (e) => this.setState({descriptionInput: e.target.value}) }
+                  margin="normal"
+                  />
+                  <TextField
+                  id="date"
+                  label="Date"
+                  value={this.state.dateInput}
+                  onChange={ (e) => this.setState({dateInput: e.target.value}) }
+                  margin="normal"
+                  />
+                  <TextField
+                  id="location"
+                  label="Location"
+                  value={this.state.locationInput}
+                  onChange={ (e) => this.setState({locationInput: e.target.value}) }
+                  margin="normal"
+                  />
+                  <TextField
+                  id="img"
+                  label="Image URL"
+                  value={this.state.imgInput}
+                  onChange={ (e) => this.setState({imgInput: e.target.value}) }
+                  margin="normal"
+                  />
+                  <div className='button-container'>
+                     <Link to='/dashboard'><button className='button' >Back</button ></Link>
+                     <button onClick={() => this.addMilestone()} className='button' >Add</button>
+                  </div>
                </div>
             </div>
          </div>
