@@ -77,6 +77,8 @@
 	justify-content: space-around;
 	align-items: stretch;
 	align-content: space-between;
+	position: relative;
+	bottom: 5px;
 }
 
 .lower-button {
