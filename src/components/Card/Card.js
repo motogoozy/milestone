@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import './Card.css';
 
 
+
 function Card (props) {
-   const { title, description, date, location, img } = props
-   console.log(`Displaying milestone: ${props.id}`)
+   const { milestone_id, title, description, date, location, img, handleDeleteClick } = props
+   console.log(`Displaying milestone: ${props.milestone_id}`)
    const googleMapsURL = `https://www.google.com/maps/place/${location}`;
 
       return (
@@ -30,7 +31,7 @@ function Card (props) {
                   <p>Edit</p>
                </Link>
                
-                  <p className='lower-button' >Delete</p>
+                  <p onClick={() => handleDeleteClick(milestone_id)} className='lower-button' style={{cursor: 'pointer'}}>Delete</p>
             </div>
          </div>
       )
