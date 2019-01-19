@@ -22,11 +22,17 @@ class Login extends Component {
       const res = await axios.post(`/auth/login`, { username: username, password: password })
       console.log(res.data)
       if (res.data.loggedIn) {
-         await Swal(
-            'Woohoo!',
-            'You have successfully logged in.',
-            'success'
-         )
+         const toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+         });
+         
+         toast({
+            type: 'success',
+            title: 'Signed in successfully'
+         })
          this.props.history.push('/dashboard')
       } else {
          await Swal({
@@ -60,6 +66,7 @@ class Login extends Component {
                   value={this.state.username}
                   onChange={ (e) => this.setState({username: e.target.value}) }
                   margin="normal"
+                  autoFocus="autoFocus"
                />
                <TextField
                   id="standard-password-input"
