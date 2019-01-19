@@ -1,16 +1,16 @@
 .card {
    width: 400px;
    height: 600px;
-   background-color: rgba(168, 174, 177, 0.75);
+   background-color: rgb(53, 52, 52);
    margin: 20px;
    display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
-	justify-content: flex-start;
+	justify-content: space-between;
 	align-items: center;
 	align-content: stretch;
-	border-radius: 25px;
 	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+	border-radius: 10px;
 }
 
 .card-header {
@@ -28,16 +28,17 @@
 	font-family: 'Muli', sans-serif;
 	font-weight: 500;
 	text-transform: uppercase;
-	color: #222121;
+	color: #fdfdfd;
 	font-size: 20px;
 	letter-spacing: 0.65px;
+	text-align: center;
 	margin-bottom: 1px;
 }
 
 .card-text {
 	font-family: 'Muli', sans-serif;
 	font-weight: 400;
-	color: #222121;
+	color: #fdfdfd;
 	font-size: 16px;
 	text-align: center;
 	margin: 0;
@@ -50,8 +51,8 @@
 	justify-content: flex-start;
 	align-items: center;
 	align-content: stretch;
-	width: 90%;
-	max-height: 370px;
+	width: 92%;
+	max-height: 390px;
 	overflow: scroll;
 }
 
@@ -84,7 +85,7 @@
 .lower-button {
 	text-transform: uppercase;
 	font-family: 'Muli', sans-serif;
-	color: #4c4c4c;
+	color: #fdfdfd;
 	font-size: 14px;
 	margin-left: 59px;
 	margin-right: 59px;
@@ -93,5 +94,12 @@
 .lower-button:hover {
    color: teal; 
 }
+
+.static-modal {
+	height: 100px;
+	width: 100px;
+	background-color: green;
+}
+
 
 /* MEDIA QUERIES */
