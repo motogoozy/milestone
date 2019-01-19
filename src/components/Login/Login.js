@@ -28,7 +28,7 @@ class Login extends Component {
             showConfirmButton: false,
             timer: 3000
          });
-         
+
          toast({
             type: 'success',
             title: 'Signed in successfully'
@@ -77,8 +77,8 @@ class Login extends Component {
                   type="password"
                />
                <div>
-                  <button onClick={ () => this.props.history.push('/')} className='button'>Back</button>
-                  <button onClick={ () => this.login() } className='button' >Submit</button>
+                  <button onClick={ () => this.props.history.push('/')} className='login-back-submit-buttons'>Back</button>
+                  <button onClick={ () => this.login() } className='login-back-submit-buttons' >Submit</button>
                </div>
             </div>
          </div>
