@@ -33,8 +33,9 @@ app.post('/auth/login', authController.login) //login
 app.get('/auth/logout', authController.logout) //logout
 
 //MAIN ENDPOINTS
-app.get(`/api/milestones`, mainController.getAll); //Gets all of the user's milestones (req.params)
+app.get(`/api/milestones`, mainController.getAll); //Gets all of the user's milestones (user_id stored on session)
 app.post(`/api/milestones/add`, mainController.addMilestone); //Adds a post to database (req.body)
-
+app.put(`/api/milestone/edit`, mainController.editMilestone) //Edits a milestone (req.body)
 app.delete(`/api/milestones/delete/:milestone_id`, mainController.deleteMilestone); //Deletes milestone from database
-app.get('/api/userData', mainController.userData)
+app.get('/api/userData', mainController.userData) 
+app.get('/api/milestones/getOne/:milestone_id', mainController.getOne) //getting one milestone (req.params)
