@@ -30,7 +30,7 @@ class AddMilestone extends Component {
          <div className='add-main' >
             < HeaderMain /> 
 
-            <div className='body' >
+            <div className='body-main' >
                <div className='add-milestone-text'>
                   <h2>Add Milestone</h2>
                </div>
@@ -42,6 +42,7 @@ class AddMilestone extends Component {
                   value={this.state.titleInput}
                   onChange={ (e) => this.setState({titleInput: e.target.value}) }
                   margin="normal"
+                  autoFocus="autoFocus"
                   />
                   <TextField
                   id="description"
@@ -72,8 +73,8 @@ class AddMilestone extends Component {
                   margin="normal"
                   />
                   <div className='button-container'>
-                     <Link to='/dashboard'><button className='button' >Back</button ></Link>
-                     <button onClick={() => this.addMilestone()} className='button' >Add</button>
+                     <button onClick={ (e) => this.props.history.push('/dashboard')} className='add-menu-button' >Back</button>
+                     <button onClick={() => this.addMilestone()} className='add-menu-button' >Add</button>
                   </div>
                </div>
             </div>
