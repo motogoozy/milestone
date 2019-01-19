@@ -35,23 +35,20 @@ class Dashboard extends Component {
       }
    }
    
+   // componentDidUpdate(prevProps) {
+      //    if(prevProps.match.params.id !== this.props.match.params.id) {
+         //       const response = axios.get(`/api/milestones/${this.state.user_id}`)
+         //       this.setState({milestones: response.data})
+         //    }
+         // }
+
+         
    async getMilestones() {
       const response = await axios.get(`/api/milestones`)
       this.setState({milestones: response.data})
+      console.log(response.data)
    }
-   
-   // componentDidUpdate(prevProps) {
-   //    if(prevProps.match.params.id !== this.props.match.params.id) {
-   //       axios.get(`/api/milestones/${this.state.user_id}`)
-   //       this.setState({milestones: response.data})
-   //    }
-   // }
-
-
-   async handleDeleteClick(milestone_id) {
-      const response = await axios.delete(`/api/milestones/delete/${milestone_id}`)
-      console.log(response.data.message);
-   }
+         
 
 
    render() {
@@ -60,18 +57,10 @@ class Dashboard extends Component {
                <div key={milestone.id}>
                   < Card 
                      milestone_id={milestone.id}
-                     title={milestone.title}
-                     description={milestone.description}
-                     date={milestone.date}
-                     location={milestone.location}
-                     img={milestone.img}
-                     handleDeleteClick={this.handleDeleteClick}
                   /> 
                </div>
          )
       })
-
-      const { milestones } = this.state;
 
 
       return (
@@ -79,7 +68,7 @@ class Dashboard extends Component {
             
             < HeaderMain />
 
-            <div className='body' >
+            <div className='body-main' >
 
                <div className='add-input-container'>
                   <div className='add-button'>
@@ -89,17 +78,15 @@ class Dashboard extends Component {
                   </div>
                </div>
 
-               <div className='card-container' >
                   <div className='my-milestones'>
                      <h2>My Milestones</h2>
                   </div>
+               <div className='card-container' >
                   
                   {
-                     !milestones.length < 1 ? (
+                     !this.state.milestones.length < 1 ? (
                         displayCards
                      ) : <p className='no-milestones-text'>You have no Milestones to display. Click the add button to log a new Milestone.</p>
-
-                     
                   }
 
                </div>
