@@ -4,11 +4,23 @@ import { withRouter } from 'react-router-dom';
 import './HeaderMain.css';
 import stoneIcon from '../../assets/milestoneIcon2.png';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 class HeaderMain extends Component {
 
    async logout() {
-      const res = await axios.get('/auth/logout')
+      await axios.get('/auth/logout')
+      const toast = Swal.mixin({
+         toast: true,
+         position: 'top-end',
+         showConfirmButton: false,
+         timer: 3000
+      });
+      
+      toast({
+         type: 'success',
+         title: 'Logged out successfully'
+      })
       this.props.history.push('/')
    }
 
