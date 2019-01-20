@@ -21,20 +21,34 @@ class Register extends Component {
 
    async register() {
       const { username, password, profile_pic } = this.state;
-      const res = await axios.post(`/auth/register`, { username: username, password: password, profile_pic: profile_pic })
-      if (res.data.loggedIn) {
+      if (password.length < 1) {
+         await Swal({
+            type: 'warning',
+            title: 'Oops!',
+            text: 'Please enter a password.'
+         })
+      } else {
+         const res = await axios.post(`/auth/register`, { username: username, password: password, profile_pic: profile_pic })
+         if (res.data.loggedIn) {
             await Swal(
-               'Welcome!',
+               `Welcome, ${username}!`,
                'You have successfully created an account.',
                'success'
             )
          this.props.history.push('/dashboard')
-      } else {
+         } else {
          await Swal({
             type: 'error',
             title: 'Oops!',
             text: res.data.message
          })
+         }
+      }
+   }
+
+   onKeyPress = (e) => {
+      if(e.which === 13) {
+         this.register();
       }
    }
 
@@ -61,6 +75,7 @@ class Register extends Component {
                   onChange={ (e) => this.setState({username: e.target.value}) }
                   margin="normal"
                   autoFocus="autoFocus"
+                  onKeyPress={this.onKeyPress}
                />
                <TextField
                   id="standard-password-input"
@@ -69,16 +84,18 @@ class Register extends Component {
                   onChange={ (e) => this.setState({password: e.target.value}) }
                   margin="normal"
                   type="password"
+                  onKeyPress={this.onKeyPress}
                />
                <TextField
                   label="Profile Picture URL"
                   value={this.state.profile_pic}
                   onChange={ (e) => this.setState({profile_pic: e.target.value}) }
                   margin="normal"
+                  onKeyPress={this.onKeyPress}
                />
                <div>
-                  <button onClick={() => this.props.history.push('/')} className='button' >Back</button>
-                  <button onClick={() => this.register()} className='button' >Submit</button>
+                  <button onClick={() => this.props.history.push('/')} className='register-back-submit-buttons' >Back</button>
+                  <button onClick={() => this.register()} className='register-back-submit-buttons' >Submit</button>
                </div>
             </div>
          </div>
