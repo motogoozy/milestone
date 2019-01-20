@@ -33,6 +33,7 @@ class HeaderMain extends Component {
 
    render() {
       const { username, profile_pic } = this.props.user;
+      console.log(username)
 
       return (
          <div className='header-nav'>
@@ -51,8 +52,8 @@ class HeaderMain extends Component {
                   <div className='user-info'>
                      {
                         profile_pic ? (
-                           <img src={profile_pic} className='profile-pic' ></img>
-                        ) : <img src='https://t3.ftcdn.net/jpg/00/64/67/80/240_F_64678017_zUpiZFjj04cnLri7oADnyMH0XBYyQghG.jpg' className='profile-pic' ></img>
+                           <img src={profile_pic} alt="" className='profile-pic' ></img>
+                        ) : <img src='https://t3.ftcdn.net/jpg/00/64/67/80/240_F_64678017_zUpiZFjj04cnLri7oADnyMH0XBYyQghG.jpg' alt="" className='profile-pic' ></img>
                      }
                   </div>
                </div>
