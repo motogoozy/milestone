@@ -74,7 +74,7 @@ class Register extends Component {
                   value={this.state.username}
                   onChange={ (e) => this.setState({username: e.target.value}) }
                   margin="normal"
-                  autoFocus="autoFocus"
+                  autoFocus={true}
                   onKeyPress={this.onKeyPress}
                />
                <TextField
