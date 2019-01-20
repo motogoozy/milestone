@@ -50,6 +50,8 @@
 	margin-left: 6px;
 }
 
+
+
 .logout-button {
    font-family: 'Muli', sans-serif;
    color: #4C4C4C;
@@ -57,10 +59,39 @@
    text-transform: uppercase;
    font-weight: bold;
    font-size: 15px;
-   text-decoration: none !important;
+	text-decoration: none !important;
 }
 
 .logout-button:hover {
 	color: teal;
 	cursor: pointer;
+}
+
+.profile-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
+}
+
+.logout-button-container {
+	margin-right: 20px;
+}
+
+.user-info {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+.profile-pic {
+	height: 50px;
+	width: 50px;
+	border-radius: 100px;
+	border: 1px solid #4C4C4C;
+	box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
 }
