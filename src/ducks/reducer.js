@@ -1,5 +1,5 @@
 const initialState = {
-   user: {}
+   user: {},
 }
 
 //ACTION TYPES
@@ -21,7 +21,8 @@ export function getUserData(userData) {
 //REDUCER 
 export default function reducer(state = initialState, action) {
    switch(action.type) {
-
+      case GET_USER_DATA:
+         return { ...state, user: action.payload }
 
       default: 
          return state;
