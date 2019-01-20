@@ -24,14 +24,14 @@ class Login extends Component {
       if (res.data.loggedIn) {
          const toast = Swal.mixin({
             toast: true,
-            position: 'top-end',
+            position: 'center',
             showConfirmButton: false,
             timer: 3000
          });
 
          toast({
             type: 'success',
-            title: 'Signed in successfully'
+            title: `Welcome back, ${username}!`
          })
          this.props.history.push('/dashboard')
       } else {
@@ -40,6 +40,12 @@ class Login extends Component {
             title: 'Oops!',
             text: res.data.message
          })
+      }
+   }
+
+   onKeyPress = (e) => {
+      if(e.which === 13) {
+         this.login();
       }
    }
 
@@ -67,6 +73,7 @@ class Login extends Component {
                   onChange={ (e) => this.setState({username: e.target.value}) }
                   margin="normal"
                   autoFocus="autoFocus"
+                  onKeyPress={this.onKeyPress}
                />
                <TextField
                   id="standard-password-input"
@@ -75,6 +82,7 @@ class Login extends Component {
                   onChange={ (e) => this.setState({password: e.target.value}) }
                   margin="normal"
                   type="password"
+                  onKeyPress={this.onKeyPress}
                />
                <div>
                   <button onClick={ () => this.props.history.push('/')} className='login-back-submit-buttons'>Back</button>

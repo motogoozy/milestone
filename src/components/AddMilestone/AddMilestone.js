@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './AddMilestone.css';
 import HeaderMain from '../HeaderMain/HeaderMain';
@@ -24,6 +23,11 @@ class AddMilestone extends Component {
       this.props.history.push('/dashboard');
    }
 
+   onKeyPress = (e) => {
+      if(e.which === 13) {
+         this.addMilestone();
+      }
+   }
 
    render() {
       return (
@@ -43,6 +47,7 @@ class AddMilestone extends Component {
                   onChange={ (e) => this.setState({titleInput: e.target.value}) }
                   margin="normal"
                   autoFocus="autoFocus"
+                  onKeyPress={this.onKeyPress}
                   />
                   <TextField
                   id="description"
@@ -50,6 +55,7 @@ class AddMilestone extends Component {
                   value={this.state.descriptionInput}
                   onChange={ (e) => this.setState({descriptionInput: e.target.value}) }
                   margin="normal"
+                  onKeyPress={this.onKeyPress}
                   />
                   <TextField
                   id="date"
@@ -57,6 +63,7 @@ class AddMilestone extends Component {
                   value={this.state.dateInput}
                   onChange={ (e) => this.setState({dateInput: e.target.value}) }
                   margin="normal"
+                  onKeyPress={this.onKeyPress}
                   />
                   <TextField
                   id="location"
@@ -64,6 +71,7 @@ class AddMilestone extends Component {
                   value={this.state.locationInput}
                   onChange={ (e) => this.setState({locationInput: e.target.value}) }
                   margin="normal"
+                  onKeyPress={this.onKeyPress}
                   />
                   <TextField
                   id="img"
@@ -71,6 +79,7 @@ class AddMilestone extends Component {
                   value={this.state.imgInput}
                   onChange={ (e) => this.setState({imgInput: e.target.value}) }
                   margin="normal"
+                  onKeyPress={this.onKeyPress}
                   />
                   <div className='button-container'>
                      <button onClick={ (e) => this.props.history.push('/dashboard')} className='add-menu-button' >Back</button>
