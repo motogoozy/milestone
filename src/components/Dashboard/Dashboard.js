@@ -50,7 +50,6 @@ class Dashboard extends Component {
    }
          
 
-
    render() {
       const displayCards = this.state.milestones.map(milestone => {
          return(
@@ -61,6 +60,8 @@ class Dashboard extends Component {
                </div>
          )
       })
+
+      const {username} = this.props.user
 
 
       return (
@@ -79,7 +80,7 @@ class Dashboard extends Component {
                </div>
 
                   <div className='my-milestones'>
-                     <h2>My Milestones</h2>
+                     <h2>{username}'s Milestones</h2>
                   </div>
                <div className='card-container' >
                   
