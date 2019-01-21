@@ -3,7 +3,7 @@ import axios from 'axios';
 import './AddMilestone.css';
 import HeaderMain from '../HeaderMain/HeaderMain';
 import TextField from '@material-ui/core/TextField';
-
+import DatePicker from '../AddMilestone/DatePicker/DatePicker';
 
 class AddMilestone extends Component {
    constructor() {
@@ -13,7 +13,7 @@ class AddMilestone extends Component {
          descriptionInput: '',
          dateInput: '',
          locationInput: '',
-         imgInput: ''
+         imgInput: '',
       }
    }
 
@@ -21,12 +21,17 @@ class AddMilestone extends Component {
       const { titleInput, descriptionInput, dateInput, locationInput, imgInput } = this.state;
       const response = await axios.post('/api/milestones/add', { title: titleInput, description: descriptionInput, date: dateInput, location: locationInput, img: imgInput })
       this.props.history.push('/dashboard');
+      console.log(response.data)
    }
 
    onKeyPress = (e) => {
       if(e.which === 13) {
          this.addMilestone();
       }
+   }
+
+   handleDateChange = (date) => {
+      this.setState({dateInput: date})
    }
 
    render() {
@@ -46,7 +51,7 @@ class AddMilestone extends Component {
                   value={this.state.titleInput}
                   onChange={ (e) => this.setState({titleInput: e.target.value}) }
                   margin="normal"
-                  autoFocus="autoFocus"
+                  autoFocus={true}
                   onKeyPress={this.onKeyPress}
                   />
                   <TextField
@@ -58,20 +63,18 @@ class AddMilestone extends Component {
                   onKeyPress={this.onKeyPress}
                   />
                   <TextField
-                  id="date"
-                  label="Date"
-                  value={this.state.dateInput}
-                  onChange={ (e) => this.setState({dateInput: e.target.value}) }
-                  margin="normal"
-                  onKeyPress={this.onKeyPress}
-                  />
-                  <TextField
                   id="location"
                   label="Location"
                   value={this.state.locationInput}
                   onChange={ (e) => this.setState({locationInput: e.target.value}) }
                   margin="normal"
                   onKeyPress={this.onKeyPress}
+                  />
+                  <DatePicker
+                  id="date"
+                  value={this.state.dateInput}
+                  margin="normal"
+                  handleDateChange={this.handleDateChange}
                   />
                   <TextField
                   id="img"
@@ -81,7 +84,7 @@ class AddMilestone extends Component {
                   margin="normal"
                   onKeyPress={this.onKeyPress}
                   />
-                  <div className='button-container'>
+                  <div className='add-button-container'>
                      <button onClick={ (e) => this.props.history.push('/dashboard')} className='add-menu-button' >Back</button>
                      <button onClick={() => this.addMilestone()} className='add-menu-button' >Add</button>
                   </div>
