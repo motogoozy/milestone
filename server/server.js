@@ -5,7 +5,7 @@ const massive = require('massive');
 const mainController = require('./mainController');
 const authController = require('./authController');
 
-const { SERVER_PORT, CONNECTION_STRING, SECRET } = process.env;
+const { SERVER_PORT, CONNECTION_STRING, SECRET, NODE_ENV } = process.env;
 
 const app = express();
 
@@ -18,6 +18,8 @@ app.use(session({
    saveUninitialized: false
 }));
 
+
+//DATABASE CONNECTION
 massive(CONNECTION_STRING).then(db => {
    app.set('db', db)
       console.log(('Connected to database'))
@@ -33,7 +35,7 @@ app.post('/auth/login', authController.login) //login
 app.get('/auth/logout', authController.logout) //logout
 
 //MAIN ENDPOINTS
-app.get(`/api/milestones`, mainController.getAll); //Gets all of the user's milestones (user_id stored on session)
+app.get(`/api/milestones`, mainController.getAll); //Gets all of the user's milestones (user_id, username, and profile_pic stored on session)
 app.post(`/api/milestones/add`, mainController.addMilestone); //Adds a post to database (req.body)
 app.put(`/api/milestone/edit`, mainController.editMilestone) //Edits a milestone (req.body)
 app.delete(`/api/milestones/delete/:milestone_id`, mainController.deleteMilestone); //Deletes milestone from database
