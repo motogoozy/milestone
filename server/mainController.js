@@ -18,17 +18,7 @@ module.exports = {
       const { milestone_id, title, description, date, location, img } = req.body;
       const db = req.app.get('db');
 
-      const oneMilestone = await db.get_one_milestone({ milestone_id })
-      const updatedMilestone = {
-         milestone_id, 
-         title: title || oneMilestone.title,
-         description: description || oneMilestone.description,
-         date: date || oneMilestone.date,
-         location: location || oneMilestone.location,
-         img: img || oneMilestone.img
-      }
-
-      const editMilestone = await db.edit_milestone( updatedMilestone )
+      const edited = await db.edit_milestone({ milestone_id, title, description, date, location, img })
       res.status(200).send({ message: 'Milestone updated' })
    },
 
