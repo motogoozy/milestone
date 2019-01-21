@@ -13,6 +13,7 @@ class HeaderMain extends Component {
    async componentDidMount() {
       const res = await axios.get('/api/userData')
       this.props.getUserData(res.data)
+      console.log(`user: ${res.data.username}`)
    }
 
    async logout() {
@@ -32,8 +33,7 @@ class HeaderMain extends Component {
    }
 
    render() {
-      const { username, profile_pic } = this.props.user;
-      console.log(username)
+      const { profile_pic } = this.props.user;
 
       return (
          <div className='header-nav'>
