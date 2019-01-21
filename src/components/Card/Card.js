@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './Card.css';
-import Swal from 'sweetalert2';
 import axios from 'axios';
+import TextField from '@material-ui/core/TextField';
+import DatePicker from '../AddMilestone/DatePicker/DatePicker';
 
 
 
@@ -15,11 +16,13 @@ class Card extends Component {
          location: '',
          img: '',
          milestone_id: props.milestone_id,
+         toggleEdit: false,
       }
    }
 
    componentDidMount() {
-      axios.get(`/api/milestones/getOne/${this.props.milestone_id}`).then(res => {
+      const { milestone_id } = this.state;
+      axios.get(`/api/milestones/getOne/${milestone_id}`).then(res => {
          const data = res.data[0]
          this.setState({
             title: data.title,
@@ -32,40 +35,20 @@ class Card extends Component {
    }
 
    async handleEdit() {
-      const {value: edits} = await Swal({
-         title: 'Edit Milestone',
-         html:
-            '<input id="title-input" class="swal2-input" placeholder="Title">' +
-            '<input id="description-input" class="swal2-input" placeholder="Description" >' +
-            '<input id="date-input" class="swal2-input" placeholder="Date">' +
-            '<input id="location-input" class="swal2-input" placeholder="Location" >' +
-            '<input id="img-input" class="swal2-input" placeholder="Image URL" >',
-            focusConfirm: false,
-            
-            preConfirm: () => {
-            this.setState ({
-               title: document.getElementById('title-input').value,
-               description: document.getElementById('description-input').value,
-               date: document.getElementById('date-input').value,
-               location: document.getElementById('location-input').value,
-               img: document.getElementById('img-input').value
-            })
-            let edits =  [
-               document.getElementById('title-input').value,
-               document.getElementById('description-input').value,
-               document.getElementById('date-input').value,
-               document.getElementById('location-input').value,
-               document.getElementById('img-input').value,
-            ]
-            let body = { title: edits[0], description: edits[1], date: edits[2], location: edits[3], img: edits[4], milestone_id: this.state.milestone_id }
-                  axios.put('/api/milestone/edit', body)
-            }
-         })
+      const { milestone_id } = this.state;
+      const { title, description, date, location, img } = this.state;
+      const response = await axios.put('/api/milestone/edit', {milestone_id, title, description, date, location, img })
+      this.setState({toggleEdit: false})
+      console.log(response.data.message)
    }
 
    async handleDelete(milestone_id) {
       const response = await axios.delete(`/api/milestones/delete/${milestone_id}`)
       console.log(response.data.message);
+   }
+
+   handleDateChange = (date) => {
+      this.setState({date: date})
    }
 
 
@@ -79,8 +62,8 @@ class Card extends Component {
          <div className='card'>
             <div className='card-header'>
                <p className='card-title'>{title}</p>
-               <p className='card-text'>{date}</p>
                <a href={googleMapsURL} className='card-text' target='_blank' rel="noopener noreferrer" >{location} </a>
+               <p className='card-text'>{date}</p>
             </div>
 
             <div className='image-container' >
@@ -91,9 +74,9 @@ class Card extends Component {
                <p className='card-text'>{description}</p>
             </div>
 
-            <div className='button-container'>
+            <div className='lower-button-container'>
                   <p className='lower-button' style={{cursor: 'pointer'}}
-                     onClick={ () => this.handleEdit()} >
+                     onClick={ () => this.setState({toggleEdit: true})} >
                         Edit
                   </p>
                
@@ -101,6 +84,63 @@ class Card extends Component {
                         Delete
                   </p>
             </div>
+
+            
+            {
+               this.state.toggleEdit === true ? 
+               <div className='modal-wrapper' >
+                  <div className='modal'>
+                     <div className='edit-input-box' >
+                        <TextField
+                        id="title"
+                        label="Title"
+                        value={this.state.title}
+                        onChange={ (e) => this.setState({title: e.target.value}) }
+                        margin="normal"
+                        autoFocus={true}
+                        onKeyPress={this.onKeyPress}
+                        />
+                        <TextField
+                        id="description"
+                        label="Description"
+                        value={this.state.description}
+                        onChange={ (e) => this.setState({description: e.target.value}) }
+                        margin="normal"
+                        onKeyPress={this.onKeyPress}
+                        />
+                        <TextField
+                        id="location"
+                        value={this.state.location}
+                        onChange={ (e) => this.setState({location: e.target.value}) }
+                        margin="normal"
+                        onKeyPress={this.onKeyPress}
+                        />
+                        <DatePicker
+                        id="date"
+                        value={this.state.date}
+                        margin="normal"
+                        handleDateChange={this.handleDateChange}
+                        />
+                        <TextField
+                        id="img"
+                        label="Image URL"
+                        value={this.state.img}
+                        onChange={ (e) => this.setState({img: e.target.value}) }
+                        margin="normal"
+                        onKeyPress={this.onKeyPress}
+                        />
+                        <div className='button-container'>
+                           <button onClick={ (e) => this.setState({ toggleEdit: false }) } className='edit-menu-button' >Cancel</button>
+                           <button onClick={() => this.handleEdit()} className='edit-menu-button' >Submit</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               : null
+            }
+            
+            
 
          </div>
       )
