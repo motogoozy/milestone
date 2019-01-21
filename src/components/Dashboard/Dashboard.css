@@ -6,7 +6,7 @@
 .body-main{
 	width: 100vw;
 	height: 100vh;
-   background-color: #fffaf4;
+   background-color: #fbfbfb;
    display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
@@ -41,7 +41,7 @@
 	position: fixed;
 	top: 11.5%;
 	right: 2%;
-   z-index: 10;
+   z-index: 6;
 }
 
 .card-container {
