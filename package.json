@@ -14,6 +14,7 @@
     "express-session": "^1.15.6",
     "hash-router": "^0.4.0",
     "massive": "^5.7.2",
+    "moment": "^2.23.0",
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.9",
     "react": "^16.7.0",
