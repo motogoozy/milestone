@@ -3,6 +3,7 @@ import './Card.scss';
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import DatePicker from '../AddMilestone/DatePicker/DatePicker';
+import moment from 'moment';
 
 
 
@@ -54,8 +55,8 @@ class Card extends Component {
 
    render () {
       const { title, description, date, location, img, milestone_id } = this.state
-      console.log(`Displaying milestone: ${this.props.milestone_id}`)
       const googleMapsURL = `https://www.google.com/maps/place/${location}`;
+      let now = moment().format('MM/DD/YY')
 
 
       return (
@@ -85,7 +86,7 @@ class Card extends Component {
                   </p>
             </div>
 
-            
+            {/* MODAL */}
             {
                this.state.toggleEdit === true ? 
                <div className='modal-wrapper' >
