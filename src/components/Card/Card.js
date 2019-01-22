@@ -110,6 +110,7 @@ class Card extends Component {
                         />
                         <TextField
                         id="location"
+                        label='Location'
                         value={this.state.location}
                         onChange={ (e) => this.setState({location: e.target.value}) }
                         margin="normal"
