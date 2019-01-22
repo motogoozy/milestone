@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { withRouter} from 'react-router-dom';
 import { getUserData } from '../../ducks/reducer';
+import { Link } from 'react-router-dom';
+import { withRouter} from 'react-router-dom';
 import axios from 'axios';
 import './HeaderMain.css';
 import stoneIcon from '../../assets/milestoneIcon2.png';
-import Swal from 'sweetalert2';
+import UserMenu from '../HeaderMain/UserMenu/UserMenu';
+
 
 class HeaderMain extends Component {
+   constructor() {
+      super();
+      this.state = {
+         showMenu: false
+      }
+   }
+
 
    async componentDidMount() {
       const res = await axios.get('/api/userData')
@@ -16,24 +24,10 @@ class HeaderMain extends Component {
       console.log(`user: ${res.data.username}`)
    }
 
-   async logout() {
-      await axios.get('/auth/logout')
-      const toast = Swal.mixin({
-         toast: true,
-         position: 'center',
-         showConfirmButton: false,
-         timer: 3000
-      });
-      
-      toast({
-         type: 'success',
-         title: 'Logged out successfully'
-      })
-      this.props.history.push('/')
-   }
+
 
    render() {
-      const { profile_pic } = this.props.user;
+      const { username } = this.props.user;
 
       return (
          <div className='header-nav'>
@@ -46,16 +40,14 @@ class HeaderMain extends Component {
                </Link>
          
                <div className='profile-container' >
-                  <div className='logout-button-container'>
-                     <p onClick={() => this.logout()} className='logout-button'>Logout</p>
+                  <div className='username-container'>
+                     { username }
                   </div>
-                  <div className='user-info'>
-                     {
-                        profile_pic ? (
-                           <img src={profile_pic} alt="" className='profile-pic' ></img>
-                        ) : <img src='https://t3.ftcdn.net/jpg/00/64/67/80/240_F_64678017_zUpiZFjj04cnLri7oADnyMH0XBYyQghG.jpg' alt="" className='profile-pic' ></img>
-                     }
+                  
+                  <div className='menu-button-container'>
+                     < UserMenu />
                   </div>
+                  
                </div>
                
             </div>
@@ -68,4 +60,4 @@ class HeaderMain extends Component {
 const mapStateToProps = (reduxState) => reduxState;
 
 
-export default connect(mapStateToProps, {getUserData})(withRouter(HeaderMain));
+export default withRouter(connect(mapStateToProps, {getUserData})(HeaderMain))
