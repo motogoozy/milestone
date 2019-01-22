@@ -1,9 +1,9 @@
 @import '../../styles.scss';
 
-.body {
+.body-main {
 	width: 100vw;
    height: 100vh;
-   background-color: #fffaf4;
+   background-color: $primary-background-color;
    display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
