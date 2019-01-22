@@ -25,10 +25,10 @@ class Dashboard extends Component {
       console.log(moment()._d)
       try {
          const response = await axios.get('/api/userData')
-         if(response.data) {
+         if (response.data) {
             this.getMilestones()
-         } 
-      } catch(error) {
+         }
+      } catch (error) {
          console.log(error)
          await Swal({
             type: 'error',
@@ -38,7 +38,7 @@ class Dashboard extends Component {
          this.props.history.push('/')
       }
    }
-   
+
    // componentDidUpdate(prevProps) {
    //       if(prevProps.match.params.id !== this.props.match.params.id) {
    //             const response = axios.get(`/api/milestones`)
@@ -46,66 +46,85 @@ class Dashboard extends Component {
    //          }
    //       }
 
-         
+
    async getMilestones() {
       const response = await axios.get(`/api/milestones`)
-      this.setState({milestones: response.data})
+      this.setState({ milestones: response.data })
       console.log(response.data)
    }
 
    handleSearch = (searchString) => {
-      this.setState({search: searchString})
-      console.log(this.state.search)
+      this.setState({ search: searchString })
+
    }
-         
+
 
    render() {
-      const displayCards = this.state.milestones.map(milestone => {
-         return(
-               <div key={milestone.id}>
-                  < Card 
-                     milestone_id={milestone.id}
-                  /> 
-               </div>
+      let filteredArr = this.state.milestones; //setting initial value to our original array of milestones
+      if (this.state.search) { //if user has typed anything on the search bar
+         filteredArr = this.state.milestones.filter((object, index) => { //filtering through the existing array of milestones. Filter makes a new copy of the array. The .filter method uses a returned boolean to determine what is kept in the new array. If it's true, it's kept. If false, it's kicked out.
+            let passed = false; //setting initial passed test to false. Each object that returns false (meaning the object doesn't contain what was searched) will not be included in the new array.
+            for (let property in object) { //for each property value in the object
+               if (typeof (object[property]) === 'string') { //if what's coming in is a string
+                  if (object[property].toLowerCase().includes(this.state.search.toLowerCase())) { //if the property on an object contains what was searched
+                     passed = true; //set passed to true
+                  }
+               }
+            }
+            if (passed === true) {
+               return true; //this object (milestone) will be included in the filteredArr. 
+            } else {
+               return false; //this object will be kicked out of the array. 
+            }
+         }
          )
-      })
+      }
 
-      const {username} = this.props.user
+      const displayCards = filteredArr.map(milestone => {
+         return (
+            <div key={milestone.id}>
+               < Card
+                  milestone_id={milestone.id}
+               />
+            </div>
+         )
+      });
 
+      const { username } = this.props.user
 
       return (
          <div className='dashboard'>
-            
             < HeaderMain />
 
-            <div className='body-main' >
+            <div className='dash-body' >
 
-               <div className='add-input-container'>
-                  <div className='add-button'>
-                     <Link to='/add' >
-                        < AddButton />
-                     </Link>
+               <div className='sub-container'>
+                  <div className='username-display'>
+                     <h2>{username}'s Milestones</h2>
                   </div>
-                  <div>
-                     < SearchBar 
-                        handleSearch={this.handleSearch} />
+                  <div className='component-container' >
+                     <div className='search-bar'>
+                        < SearchBar
+                        handleSearch={this.handleSearch}/>
+                        </div>
+                        <div className='add-button'>
+                        <Link to='/add' >
+                        < AddButton />
+                        </Link>
+                     </div>
                   </div>
                </div>
 
-                  <div className='my-milestones'>
-                     <h2>{username}'s Milestones</h2>
-                  </div>
-               <div className='card-container' >
-                  
-                  {
+               <div className='card-container'>
+               {
                      !this.state.milestones.length < 1 ? (
                         displayCards
                      ) : <p className='no-milestones-text'>You have no Milestones to display. Click the add button to log a new Milestone.</p>
                   }
-
                </div>
 
             </div>
+
 
          </div>
       );
@@ -117,4 +136,57 @@ class Dashboard extends Component {
 
 const mapStateToProps = (reduxState) => reduxState;
 
-export default connect(mapStateToProps, {getUserData})(Dashboard);
+export default connect(mapStateToProps, { getUserData })(Dashboard);
+
+// render() {
+//    const displayCards = this.state.milestones.map(milestone => {
+//       return(
+//             <div key={milestone.id}>
+//                < Card 
+//                   milestone_id={milestone.id}
+//                /> 
+//             </div>
+//       )
+//    })
+
+//    const {username} = this.props.user
+
+
+//    return (
+//       <div className='dashboard'>
+         
+//          < HeaderMain />
+
+//          <div className='body-main' >
+
+//             <div className='add-input-container'>
+//                <div className='add-button'>
+//                   <Link to='/add' >
+//                      < AddButton />
+//                   </Link>
+//                </div>
+//                <div>
+//                   < SearchBar 
+//                      handleSearch={this.handleSearch} />
+//                </div>
+//             </div>
+
+//                <div className='my-milestones'>
+//                   <h2>{username}'s Milestones</h2>
+//                </div>
+//             <div className='card-container' >
+               
+//                {
+//                   !this.state.milestones.length < 1 ? (
+//                      displayCards
+//                   ) : <p className='no-milestones-text'>You have no Milestones to display. Click the add button to log a new Milestone.</p>
+//                }
+
+//             </div>
+
+//          </div>
+
+//       </div>
+//    );
+// }
+// }
