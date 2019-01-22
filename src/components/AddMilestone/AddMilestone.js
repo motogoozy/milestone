@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './AddMilestone.css';
+import './AddMilestone.scss';
 import HeaderMain from '../HeaderMain/HeaderMain';
 import TextField from '@material-ui/core/TextField';
 import DatePicker from '../AddMilestone/DatePicker/DatePicker';
@@ -85,8 +85,8 @@ class AddMilestone extends Component {
                   onKeyPress={this.onKeyPress}
                   />
                   <div className='add-button-container'>
-                     <button onClick={ (e) => this.props.history.push('/dashboard')} className='add-menu-button' >Back</button>
-                     <button onClick={() => this.addMilestone()} className='add-menu-button' >Add</button>
+                     <button onClick={ (e) => this.props.history.push('/dashboard')} className='input-box-button' >Back</button>
+                     <button onClick={() => this.addMilestone()} className='input-box-button' >Add</button>
                   </div>
                </div>
             </div>

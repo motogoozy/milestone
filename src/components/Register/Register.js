@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import stoneIcon from '../../assets/milestoneIcon2.png';
-import './Register.css';
+import './Register.scss';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import TextField from '@material-ui/core/TextField';
@@ -94,8 +94,8 @@ class Register extends Component {
                   onKeyPress={this.onKeyPress}
                />
                <div>
-                  <button onClick={() => this.props.history.push('/')} className='register-back-submit-buttons' >Back</button>
-                  <button onClick={() => this.register()} className='register-back-submit-buttons' >Submit</button>
+                  <button onClick={() => this.props.history.push('/')} className='input-box-button' >Back</button>
+                  <button onClick={() => this.register()} className='input-box-button' >Submit</button>
                </div>
             </div>
          </div>

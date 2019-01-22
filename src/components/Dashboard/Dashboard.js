@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUserData } from '../../ducks/reducer';
 import axios from 'axios';
-import './Dashboard.css';
+import './Dashboard.scss';
 import Card from '../Card/Card';
 import AddButton from '../Dashboard/AddButton/AddButton';
 import HeaderMain from '../HeaderMain/HeaderMain';
@@ -36,11 +36,11 @@ class Dashboard extends Component {
    }
    
    // componentDidUpdate(prevProps) {
-      //    if(prevProps.match.params.id !== this.props.match.params.id) {
-         //       const response = axios.get(`/api/milestones/${this.state.user_id}`)
-         //       this.setState({milestones: response.data})
-         //    }
-         // }
+   //       if(prevProps.match.params.id !== this.props.match.params.id) {
+   //             const response = axios.get(`/api/milestones`)
+   //             this.setState({milestones: response.data})
+   //          }
+   //       }
 
          
    async getMilestones() {

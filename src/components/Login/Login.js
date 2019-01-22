@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import stoneIcon from '../../assets/milestoneIcon2.png';
-import './Login.css';
+import './Login.scss';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import TextField from '@material-ui/core/TextField';
@@ -85,8 +85,8 @@ class Login extends Component {
                   onKeyPress={this.onKeyPress}
                />
                <div>
-                  <button onClick={ () => this.props.history.push('/')} className='login-back-submit-buttons'>Back</button>
-                  <button onClick={ () => this.login() } className='login-back-submit-buttons' >Submit</button>
+                  <button onClick={ () => this.props.history.push('/')} className='input-box-button'>Back</button>
+                  <button onClick={ () => this.login() } className='input-box-button' >Submit</button>
                </div>
             </div>
          </div>

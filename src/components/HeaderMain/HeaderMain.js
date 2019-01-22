@@ -4,7 +4,7 @@ import { getUserData } from '../../ducks/reducer';
 import { Link } from 'react-router-dom';
 import { withRouter} from 'react-router-dom';
 import axios from 'axios';
-import './HeaderMain.css';
+import './HeaderMain.scss';
 import stoneIcon from '../../assets/milestoneIcon2.png';
 import UserMenu from '../HeaderMain/UserMenu/UserMenu';
 
