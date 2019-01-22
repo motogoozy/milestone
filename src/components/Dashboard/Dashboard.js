@@ -5,20 +5,24 @@ import { getUserData } from '../../ducks/reducer';
 import axios from 'axios';
 import './Dashboard.scss';
 import Card from '../Card/Card';
-import AddButton from '../Dashboard/AddButton/AddButton';
 import HeaderMain from '../HeaderMain/HeaderMain';
+import AddButton from '../Dashboard/AddButton/AddButton';
+import SearchBar from '../Dashboard/SearchBar/SearchBar';
 import Swal from 'sweetalert2';
+import moment from 'moment';
 
 
 class Dashboard extends Component {
    constructor() {
       super();
       this.state = {
-         milestones: []
+         milestones: [],
+         search: '',
       }
    }
 
    async componentDidMount() {
+      console.log(moment()._d)
       try {
          const response = await axios.get('/api/userData')
          if(response.data) {
@@ -48,6 +52,11 @@ class Dashboard extends Component {
       this.setState({milestones: response.data})
       console.log(response.data)
    }
+
+   handleSearch = (searchString) => {
+      this.setState({search: searchString})
+      console.log(this.state.search)
+   }
          
 
    render() {
@@ -76,6 +85,10 @@ class Dashboard extends Component {
                      <Link to='/add' >
                         < AddButton />
                      </Link>
+                  </div>
+                  <div>
+                     < SearchBar 
+                        handleSearch={this.handleSearch} />
                   </div>
                </div>
 
