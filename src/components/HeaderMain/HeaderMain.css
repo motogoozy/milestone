@@ -1,7 +1,7 @@
 .header-nav {
    width: 100%;
 	height: 50px;
-   background-color: rgb(228, 149, 23);
+   background-color: rgb(197, 132, 26);
 	padding-top: .5em;
 	padding-bottom: .5em;
 	border: 1px solid #a2a2a2;
@@ -76,7 +76,7 @@
 	align-content: center;
 }
 
-.logout-button-container {
+.menu-button-container {
 	margin-right: 20px;
 }
 
