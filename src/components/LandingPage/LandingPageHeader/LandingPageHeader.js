@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LandingNavButtons from './LandingNavButtons/LandingNavButtons';
-import './LandingPageHeader.css';
+import './LandingPageHeader.scss';
 import stoneIcon from '../../../assets/milestoneIcon2.png'
 
 

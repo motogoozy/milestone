@@ -1,3 +1,5 @@
+@import '../../styles.scss';
+
 .background {
    background-image: url(../../assets/background.png);
    background-size: cover;
@@ -14,7 +16,7 @@
    left: 26%;
    transform: translate(-50%, -50%);
    z-index: 11;
-   font-family: 'Muli', sans-serif;
+   font-family: $font-family;
    font-size: 44px;
    font-weight: 200;
 }

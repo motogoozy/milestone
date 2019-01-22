@@ -1,0 +1,36 @@
+//TEXT
+$font-family: 'Muli', sans-serif;
+$primary-text-color: #535151;
+$secondary-text-color: #fdfdfd;
+$text-transform: uppercase;
+
+
+//BUTTONS
+$button-width: 70px;
+$button-height: 25px;
+
+
+//INPUT BOXES
+$box-height: 400px;
+$box-width: 400px;
+$box-background-color: rgba(187, 185, 183, 0.527);
+
+// MISC.
+
+$box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+$larger-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+
+.input-box-button {
+   width: $button-width;
+   height: $button-height;
+   margin: 25px 10px 0 10px;
+   border-radius: 25px;
+   background-color: rgb(243, 243, 243);
+   box-shadow: $box-shadow;
+   font-family: $font-family;
+   color: $primary-text-color;
+   letter-spacing: 1px;
+   text-transform: uppercase;
+   font-weight: bold;
+   padding-left: 8px;
+}

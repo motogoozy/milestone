@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import './RegisterButton.css';
+import './RegisterButton.scss';
 
 //STYLING
 const styles = theme => ({

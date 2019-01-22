@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import routes from './routes';
 
 class App extends Component {
@@ -14,6 +14,6 @@ class App extends Component {
   }
 }
 
-// const googleAPIkey = 'AIzaSyANuNYquZpuJZaIlwOUtz2rAsTgspHXEQE';
+
 
 export default App;
