@@ -40,7 +40,7 @@ render () {
       <input label='upload file' type='file' onChange={this.handleFileUpload} className='file-input' />
       <div className='add-container'>
          <button onClick={ (e) => this.props.history.push('/dashboard')} className='input-box-button' >Back</button>
-         <button type='submit' className='input-box-button'>Send</button>
+         <button type='submit' className='input-box-button'>Submit</button>
       </div>
       </form>
    );
