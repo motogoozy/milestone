@@ -40,5 +40,6 @@ app.get(`/api/milestones-asc`, mainController.getAllAsc)
 app.post(`/api/milestones/add`, mainController.addMilestone); //Adds a post to database (req.body)
 app.put(`/api/milestone/edit`, mainController.editMilestone) //Edits a milestone (req.body)
 app.delete(`/api/milestones/delete/:milestone_id`, mainController.deleteMilestone); //Deletes milestone from database
-app.get('/api/userData', mainController.userData) 
+app.get('/api/userData', mainController.userData) // getting the user data off of session.
 app.get('/api/milestones/getOne/:milestone_id', mainController.getOne) //getting one milestone (req.params)
+app.put(`/api/userData/edit`, mainController.updateProfile)
