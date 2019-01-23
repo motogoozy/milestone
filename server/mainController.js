@@ -51,5 +51,14 @@ module.exports = {
 
       const one = await db.get_one_milestone({ milestone_id })
       res.status(200).send(one)
-   }
+   },
+   
+   updateProfile: async(req, res) => {
+      const { username, profile_pic, user_id } = req.body;
+      const db = req.app.get('db');
+
+      const updated = await db.update_profile({ username, profile_pic, user_id })
+      req.session.user = { user_id: updated[0].user_id, username: updated[0].username, profile_pic: updated[0].profile_pic };
+      res.status(200).send({ message: 'Profile successfully updated', userData: req.session.user })
+   },
 }
