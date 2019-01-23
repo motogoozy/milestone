@@ -40,13 +40,6 @@ class Dashboard extends Component {
       }
    }
 
-   // componentDidUpdate(prevProps) {
-   //       if(prevProps.match.params.id !== this.props.match.params.id) {
-   //             const response = axios.get(`/api/milestones`)
-   //             this.setState({milestones: response.data})
-   //          }
-   //       }
-
 
    async getMilestones() {
       if(this.state.sortAsc === false) {
@@ -74,9 +67,10 @@ class Dashboard extends Component {
    //    this.getMilestones()
    // }
 
-   async handleDelete(milestone_id) {
+   handleDelete = async (milestone_id) => {
       const response = await axios.delete(`/api/milestones/delete/${milestone_id}`)
       console.log(response.data.message);
+      this.getMilestones();
    }
 
 
