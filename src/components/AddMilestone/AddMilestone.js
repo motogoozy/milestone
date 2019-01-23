@@ -4,24 +4,18 @@ import './AddMilestone.scss';
 import HeaderMain from '../HeaderMain/HeaderMain';
 import TextField from '@material-ui/core/TextField';
 import DatePicker from '../AddMilestone/DatePicker/DatePicker';
+import FileUpload from '../FileUpload/FileUpload';
 
 class AddMilestone extends Component {
    constructor() {
       super();
       this.state = {
-         titleInput: '',
-         descriptionInput: '',
-         dateInput: '',
-         locationInput: '',
-         imgInput: '',
+         title: '',
+         description: '',
+         date: '',
+         location: '',
+         img: '',
       }
-   }
-
-   async addMilestone() {
-      const { titleInput, descriptionInput, dateInput, locationInput, imgInput } = this.state;
-      const response = await axios.post('/api/milestones/add', { title: titleInput, description: descriptionInput, date: dateInput, location: locationInput, img: imgInput })
-      this.props.history.push('/dashboard');
-      console.log(response.data)
    }
 
    onKeyPress = (e) => {
@@ -31,7 +25,7 @@ class AddMilestone extends Component {
    }
 
    handleDateChange = (date) => {
-      this.setState({dateInput: date})
+      this.setState({date: date})
    }
 
    render() {
@@ -49,7 +43,7 @@ class AddMilestone extends Component {
                   id="title"
                   label="Title"
                   value={this.state.titleInput}
-                  onChange={ (e) => this.setState({titleInput: e.target.value}) }
+                  onChange={ (e) => this.setState({title: e.target.value}) }
                   margin="normal"
                   autoFocus={true}
                   onKeyPress={this.onKeyPress}
@@ -58,7 +52,7 @@ class AddMilestone extends Component {
                   id="description"
                   label="Description"
                   value={this.state.descriptionInput}
-                  onChange={ (e) => this.setState({descriptionInput: e.target.value}) }
+                  onChange={ (e) => this.setState({description: e.target.value}) }
                   margin="normal"
                   onKeyPress={this.onKeyPress}
                   />
@@ -66,7 +60,7 @@ class AddMilestone extends Component {
                   id="location"
                   label="Location"
                   value={this.state.locationInput}
-                  onChange={ (e) => this.setState({locationInput: e.target.value}) }
+                  onChange={ (e) => this.setState({location: e.target.value}) }
                   margin="normal"
                   onKeyPress={this.onKeyPress}
                   />
@@ -76,17 +70,10 @@ class AddMilestone extends Component {
                   margin="normal"
                   handleDateChange={this.handleDateChange}
                   />
-                  <TextField
-                  id="img"
-                  label="Image URL"
-                  value={this.state.imgInput}
-                  onChange={ (e) => this.setState({imgInput: e.target.value}) }
-                  margin="normal"
-                  onKeyPress={this.onKeyPress}
-                  />
-                  <div className='add-button-container'>
-                     <button onClick={ (e) => this.props.history.push('/dashboard')} className='input-box-button' >Back</button>
-                     <button onClick={() => this.addMilestone()} className='input-box-button' >Add</button>
+                  <div>
+                     < FileUpload
+                     state={this.state}
+                     />
                   </div>
                </div>
             </div>
