@@ -17,13 +17,11 @@ class HeaderMain extends Component {
       }
    }
 
-
    async componentDidMount() {
       const res = await axios.get('/api/userData')
       this.props.getUserData(res.data)
       console.log(`user: ${res.data.username}`)
    }
-
 
 
    render() {
