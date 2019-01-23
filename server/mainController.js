@@ -6,6 +6,13 @@ module.exports = {
       res.status(200).send(allMilestones);
    },
 
+   getAllAsc: async (req, res) => {
+      const db = req.app.get('db');
+
+      const allMilestones = await db.get_all_milestones_asc({ user_id: req.session.user.user_id })
+      res.status(200).send(allMilestones)
+   },
+
    addMilestone: async (req, res) => {
       const { title, description, date, location, img } = req.body;
       const db = req.app.get('db');
