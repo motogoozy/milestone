@@ -21,6 +21,10 @@ class UserMenu extends React.Component {
       this.setState({ anchorEl: null });
    };
 
+   handleEditClick = () => {
+      this.props.history.push('/edit-profile')
+   }
+
    logout = async () => {
       await axios.get('/auth/logout')
       const toast = Swal.mixin({
@@ -66,7 +70,7 @@ class UserMenu extends React.Component {
                open={Boolean(anchorEl)}
                onClose={this.handleClose}
             > 
-               <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+               <MenuItem onClick={this.handleEditClick}>Edit Profile</MenuItem>
                <MenuItem onClick={this.logout}>Logout</MenuItem>
             </Menu>
          </div>
