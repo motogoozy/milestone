@@ -8,6 +8,7 @@ import Card from '../Card/Card';
 import HeaderMain from '../HeaderMain/HeaderMain';
 import AddButton from '../Dashboard/AddButton/AddButton';
 import SearchBar from '../Dashboard/SearchBar/SearchBar';
+import SortToggle from '../Dashboard/SortToggle/SortToggle';
 import Swal from 'sweetalert2';
 import moment from 'moment';
 
@@ -18,11 +19,11 @@ class Dashboard extends Component {
       this.state = {
          milestones: [],
          search: '',
+         sortAsc: false,
       }
    }
 
    async componentDidMount() {
-      console.log(moment()._d)
       try {
          const response = await axios.get('/api/userData')
          if (response.data) {
@@ -48,14 +49,34 @@ class Dashboard extends Component {
 
 
    async getMilestones() {
-      const response = await axios.get(`/api/milestones`)
-      this.setState({ milestones: response.data })
-      console.log(response.data)
+      if(this.state.sortAsc === false) {
+         const response = await axios.get(`/api/milestones`)
+         this.setState({ milestones: response.data })
+         console.log(response.data)
+      } else {
+         const response = await axios.get(`/api/milestones-asc`)
+         this.setState({ milestones: response.data })
+         console.log(response.data)
+      }
    }
 
    handleSearch = (searchString) => {
       this.setState({ search: searchString })
+   }
 
+   handleSortToggle = () => {
+      this.setState({ sortAsc: !this.state.sortAsc }, () => this.getMilestones())
+   }
+
+   // THIS ALSO WORKS:
+   // handleSortToggle = async () => {
+   //    const res = await this.setState({sortAsc: !this.state.sortAsc})
+   //    this.getMilestones()
+   // }
+
+   async handleDelete(milestone_id) {
+      const response = await axios.delete(`/api/milestones/delete/${milestone_id}`)
+      console.log(response.data.message);
    }
 
 
@@ -85,6 +106,7 @@ class Dashboard extends Component {
             <div key={milestone.id}>
                < Card
                   milestone_id={milestone.id}
+                  handleDelete={this.handleDelete}
                />
             </div>
          )
@@ -99,6 +121,11 @@ class Dashboard extends Component {
             <div className='dash-body' >
 
                <div className='sub-container'>
+                  <div className='toggle-container'>
+                     < SortToggle 
+                        handleSortToggle={this.handleSortToggle}
+                        sortAsc={this.state.sortAsc} />
+                  </div>
                   <div className='username-display'>
                      <h2>{username}'s Milestones</h2>
                   </div>
