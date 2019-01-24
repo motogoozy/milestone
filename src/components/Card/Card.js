@@ -3,7 +3,7 @@ import './Card.scss';
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import DatePicker from '../AddMilestone/DatePicker/DatePicker';
-// import moment from 'moment';
+import moment from 'moment';
 
 
 
@@ -56,7 +56,7 @@ class Card extends Component {
    render () {
       const { title, description, date, location, img, milestone_id } = this.state
       const googleMapsURL = `https://www.google.com/maps/place/${location}`;
-      // let now = moment().format('MM/DD/YY')
+      console.log(date)
 
 
       return (
@@ -64,7 +64,14 @@ class Card extends Component {
             <div className='card-header'>
                <p className='card-title'>{title}</p>
                <a href={googleMapsURL} className='card-text' target='_blank' rel="noopener noreferrer" >{location} </a>
-               <p className='card-text'>{date}</p>
+               <p className='card-text'>
+                  {
+                     date === '' ? '' 
+                     : 
+                     moment(date, 'YYYY-MM-DD').format('MM/DD/YYYY')
+                  }
+               
+               </p>
             </div>
 
             <div className='image-container' >
