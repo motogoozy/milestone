@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -38,8 +39,6 @@ class UserMenu extends React.Component {
          type: 'success',
          title: 'Logged out successfully'
       });
-      
-      this.props.history.push('/')
    }
 
    render() {
@@ -71,7 +70,9 @@ class UserMenu extends React.Component {
                onClose={this.handleClose}
             > 
                <MenuItem onClick={this.handleEditClick}>Edit Profile</MenuItem>
-               <MenuItem onClick={this.logout}>Logout</MenuItem>
+               <Link to='/' style={{textDecoration: 'none'}}>
+                  <MenuItem onClick={this.logout}>Logout</MenuItem>
+               </Link>
             </Menu>
          </div>
       );
