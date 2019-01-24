@@ -10,7 +10,7 @@ import AddButton from '../Dashboard/AddButton/AddButton';
 import SearchBar from '../Dashboard/SearchBar/SearchBar';
 import SortToggle from '../Dashboard/SortToggle/SortToggle';
 import Swal from 'sweetalert2';
-import moment from 'moment';
+// import moment from 'moment';
 
 
 class Dashboard extends Component {
@@ -34,9 +34,9 @@ class Dashboard extends Component {
          await Swal({
             type: 'error',
             title: 'Error',
-            text: 'You are not logged in. Please login or sign up to begin.',
+            text: 'You are not logged in. Please login to begin.',
          })
-         this.props.history.push('/')
+         this.props.history.push('/login')
       }
    }
 
@@ -58,7 +58,7 @@ class Dashboard extends Component {
    }
 
    handleSortToggle = () => {
-      this.setState({ sortAsc: !this.state.sortAsc }, () => this.getMilestones())
+      this.setState({ sortAsc: !this.state.sortAsc }, () => this.getMilestones()) //setState can take a callback function as a second parameter.
    }
 
    // THIS ALSO WORKS:
@@ -87,7 +87,7 @@ class Dashboard extends Component {
                }
             }
             if (passed === true) {
-               return true; //this object (milestone) will be included in the filteredArr. 
+               return true; //this object (milestone) will be included in the filteredArr. (this is part of the .filter method)
             } else {
                return false; //this object will be kicked out of the array. 
             }
@@ -158,56 +158,3 @@ class Dashboard extends Component {
 const mapStateToProps = (reduxState) => reduxState;
 
 export default connect(mapStateToProps, { getUserData })(Dashboard);
-
-// render() {
-//    const displayCards = this.state.milestones.map(milestone => {
-//       return(
-//             <div key={milestone.id}>
-//                < Card 
-//                   milestone_id={milestone.id}
-//                /> 
-//             </div>
-//       )
-//    })
-
-//    const {username} = this.props.user
-
-
-//    return (
-//       <div className='dashboard'>
-         
-//          < HeaderMain />
-
-//          <div className='body-main' >
-
-//             <div className='add-input-container'>
-//                <div className='add-button'>
-//                   <Link to='/add' >
-//                      < AddButton />
-//                   </Link>
-//                </div>
-//                <div>
-//                   < SearchBar 
-//                      handleSearch={this.handleSearch} />
-//                </div>
-//             </div>
-
-//                <div className='my-milestones'>
-//                   <h2>{username}'s Milestones</h2>
-//                </div>
-//             <div className='card-container' >
-               
-//                {
-//                   !this.state.milestones.length < 1 ? (
-//                      displayCards
-//                   ) : <p className='no-milestones-text'>You have no Milestones to display. Click the add button to log a new Milestone.</p>
-//                }
-
-//             </div>
-
-//          </div>
-
-//       </div>
-//    );
-// }
-// }

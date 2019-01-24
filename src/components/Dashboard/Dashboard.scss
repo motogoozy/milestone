@@ -49,7 +49,6 @@
 	align-items: center;
 	align-content: stretch;
 	position: fixed;
-	down: 1%;
 	right: 5%;
 }
 
@@ -69,4 +68,21 @@
 .toggle-container {
    position: fixed;
    left: 6%;
+}
+
+/* MEDIA QUERIES */
+
+//iPhone X / 8 Plus / 8
+@media (max-width: 415px) {
+	.card-container {
+		margin-top: 45%;
+	}
+
+	.username-display {
+		display: none;
+	}
+
+	.toggle-container {
+		display: none;
+	}
 }

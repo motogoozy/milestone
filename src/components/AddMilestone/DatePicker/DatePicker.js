@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import './DatePicker.scss';
 // import moment from 'moment';
 
 
@@ -20,12 +21,12 @@ const styles = theme => ({
       const { classes } = props;
 
       return (
-         <form className={classes.container} noValidate>
+         <form className={classes.container} noValidate >
             <TextField
             id="date"
             label="Date"
             type="date"
-            className={classes.textField}
+            className='date-picker'
             onChange={(e)=> props.handleDateChange(e.target.value)}
             InputLabelProps={{
                shrink: true,

@@ -3,7 +3,7 @@ import './Card.scss';
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import DatePicker from '../AddMilestone/DatePicker/DatePicker';
-import moment from 'moment';
+// import moment from 'moment';
 
 
 

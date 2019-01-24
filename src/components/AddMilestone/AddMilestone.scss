@@ -71,3 +71,28 @@
 	align-items: center;
 	align-content: center;
 }
+
+/* MEDIA QUERIES */
+
+//iPhone X / 8 Plus / 8
+@media (max-width: 415px) {
+   .input-box {
+      height: $box-height;
+      width: 90vw;
+      background-color: $box-background-color;
+      border-radius: 25px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      align-content: stretch;
+      box-shadow: $larger-box-shadow;
+      position: relative;
+      top: 40px;
+   }
+
+   .input-box {
+      top: 60px;
+   }
+}

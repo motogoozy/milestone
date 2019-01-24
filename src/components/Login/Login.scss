@@ -44,3 +44,42 @@
    font-weight: bold;
    font-size: 23px;
 }
+
+/* MEDIA QUERIES */
+
+//iPhone X / 8 Plus / 8
+@media (max-width: 415px) {
+   .stone-icon {
+		display: none;
+   }
+   
+   .brand-container {
+      margin: 0;
+   }
+
+   .login-menu {
+      height: $box-height;
+      width: 80vw;
+      background-color: $box-background-color;
+      position: relative;
+      top: 160px;
+      border-radius: 25px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      align-content: stretch;
+      box-shadow: $larger-box-shadow;
+   }
+
+   .login-text {
+      font-family: $font-family;
+      color: $primary-text-color;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 23px;
+   }
+
+}
