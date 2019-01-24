@@ -85,10 +85,14 @@ app.post('/upload', (request, response) => {
       const timestamp = Date.now().toString();
       const fileName = `userPhotos/${timestamp}-lg`;
       const data = await uploadFile(buffer, fileName, type);
-      
+
       return response.status(200).send(data);
       } catch (error) {
       return response.status(400).send(error);
       }
    });
 });
+
+
+//NOTE
+// IT IS BAD CONVENTION TO USE PLURALS IN ENDPOINT URLS. NEXT TIME, DON'T PUT MILESTONES, BUT RATHER MILESTONE. ALSO THERE IS NO NEED FOR /ADD OR /EDIT, THE ACTION IS IMPLIED BY THE .POST OR .PUT REQUESTS. 
