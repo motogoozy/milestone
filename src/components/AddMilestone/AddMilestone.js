@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import './AddMilestone.scss';
 import HeaderMain from '../HeaderMain/HeaderMain';
 import TextField from '@material-ui/core/TextField';
