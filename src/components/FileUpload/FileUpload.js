@@ -20,7 +20,7 @@ submitFile = (event) => {
       'Content-Type': 'multipart/form-data'
       }
    }).then(response => {
-      const body = {...this.props.state};
+      const body = {...this.props.state}; //Making a new copy of this.state from the Dashboard component. Does not alter Dashboard's state. 
       body.img = response.data.Location;
       axios.post('/api/milestones/add', body).then(
          this.props.history.push('/dashboard')
