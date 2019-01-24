@@ -145,3 +145,21 @@
 }
 
 /* MEDIA QUERIES */
+
+//iPhone X / 8 Plus / 8
+@media (max-width: 415px) {
+	.card {
+		width: 90vw;
+		height: 500px;
+		background-color: rgb(53, 52, 52);
+		margin: 20px;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		align-items: center;
+		align-content: stretch;
+		box-shadow: $larger-box-shadow;
+		border-radius: 3px;
+	}
+}

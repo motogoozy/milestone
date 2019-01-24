@@ -20,3 +20,32 @@
    font-size: 44px;
    font-weight: 200;
 }
+
+
+//Media Queries
+
+//iPhone X / 8 Plus / 8
+@media (max-width: 415px) {
+   .background {
+      background-image: url(../../assets/background.png);
+      background-size: cover;
+      height: 100%;
+      width: 100vw;
+      background-repeat: no-repeat;
+      position: fixed;
+   }
+   
+   .background>p {
+      position: fixed;
+      width: 250px;
+      top: 33%;
+      left: 39%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      z-index: 11;
+      font-family: "Muli", sans-serif;
+      font-size: 44px;
+      font-weight: 200;
+      z-index: 5;
+   }
+}
