@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import './DatePicker.scss';
-// import moment from 'moment';
 
 
 const styles = theme => ({
