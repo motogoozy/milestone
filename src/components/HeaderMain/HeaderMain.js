@@ -30,7 +30,7 @@ class HeaderMain extends Component {
       return (
          <div className='header-nav'>
             <div className='navbar'>
-               <Link to='/' style={{textDecoration: 'none'}} >
+               <Link to='/dashboard' style={{textDecoration: 'none'}} >
                   <div className='brand-container'>
                      <img src={stoneIcon} alt="" className='icon'/>
                      <p className='brand' >Milestone</p>
