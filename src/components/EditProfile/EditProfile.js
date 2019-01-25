@@ -6,6 +6,7 @@ import { withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUserData } from '../../ducks/reducer';
 import './EditProfile.scss'
+import Swal from 'sweetalert2';
 
 class EditProfile extends Component {
    constructor(props) { //Must pass props into constructor.
@@ -14,6 +15,23 @@ class EditProfile extends Component {
          username: props.user.username, //when referencing props in the constructor we don't need to say 'this'. 
          profile_pic: props.user.profile_pic,
          img: '',
+      }
+   }
+
+   async componentDidMount() {
+      try {
+         const response = await axios.get('/api/userData')
+         if (response.data) {
+            console.log(response.data)
+         }
+      } catch (error) {
+         console.log(error)
+         await Swal({
+            type: 'error',
+            title: 'Error',
+            text: 'You are not logged in. Please login to begin.',
+         })
+         this.props.history.push('/login')
       }
    }
 
@@ -51,8 +69,6 @@ class EditProfile extends Component {
          }
          this.props.history.push('/dashboard')
       }
-
-
    }
 
    handleFileUpload = (event) => {

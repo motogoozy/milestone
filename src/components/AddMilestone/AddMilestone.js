@@ -4,6 +4,8 @@ import HeaderMain from '../HeaderMain/HeaderMain';
 import TextField from '@material-ui/core/TextField';
 import DatePicker from '../AddMilestone/DatePicker/DatePicker';
 import FileUpload from '../FileUpload/FileUpload';
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
 class AddMilestone extends Component {
    constructor() {
@@ -14,6 +16,23 @@ class AddMilestone extends Component {
          date: '',
          location: '',
          img: '',
+      }
+   }
+
+   async componentDidMount() {
+      try {
+         const response = await axios.get('/api/userData')
+         if (response.data) {
+            console.log(response.data)
+         }
+      } catch (error) {
+         console.log(error)
+         await Swal({
+            type: 'error',
+            title: 'Error',
+            text: 'You are not logged in. Please login to begin.',
+         })
+         this.props.history.push('/login')
       }
    }
 
