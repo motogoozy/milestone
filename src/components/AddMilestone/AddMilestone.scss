@@ -42,6 +42,7 @@
    box-shadow: $larger-box-shadow;
    position: relative;
    top: 40px;
+   overflow: auto;
 }
 
 .add-button-container {
@@ -93,6 +94,6 @@
    }
 
    .input-box {
-      top: 60px;
+      top: 40px;
    }
 }
