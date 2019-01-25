@@ -39,6 +39,7 @@ class UserMenu extends React.Component {
          type: 'success',
          title: 'Logged out successfully'
       });
+      this.props.history.push('/')
    }
 
    render() {
