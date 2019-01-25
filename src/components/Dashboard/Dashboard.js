@@ -10,7 +10,6 @@ import AddButton from '../Dashboard/AddButton/AddButton';
 import SearchBar from '../Dashboard/SearchBar/SearchBar';
 import SortToggle from '../Dashboard/SortToggle/SortToggle';
 import Swal from 'sweetalert2';
-// import moment from 'moment';
 
 
 class Dashboard extends Component {
