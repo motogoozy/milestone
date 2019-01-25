@@ -2,17 +2,20 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { withRouter} from 'react-router-dom';
 import './FileUpload.scss'
+import Circle from '../Circle/Circle';
 
 class FileUpload extends Component {
 constructor () {
    super();
    this.state = {
-      file: null
+      file: null,
+      loading: false,
    };
 }
 
 submitFile = (event) => {
    if (this.state.file !== null) {
+      this.setState({loading: true})
       event.preventDefault();
       const formData = new FormData();
       formData.append('file', this.state.file[0]);
@@ -32,6 +35,7 @@ submitFile = (event) => {
    } else {
       const body = {...this.props.state};
       axios.post('/api/milestones/add', body).then(
+         this.setState({loading: false}),
          this.props.history.push('/dashboard')
       )
    }
@@ -43,13 +47,24 @@ handleFileUpload = (event) => {
 
 render () {
    return (
-      <form onSubmit={this.submitFile} className='form'>
-         <input label='upload file' type='file' onChange={this.handleFileUpload} className='file-input' />
-         <div className='add-container'>
-            <button onClick={ (e) => this.props.history.push('/dashboard')} className='input-box-button' >Back</button>
-            <button type='submit' className='input-box-button'>Submit</button>
-         </div>
-      </form>
+      <div>
+         {
+            !this.state.loading ? (
+               <form onSubmit={this.submitFile} className='form'>
+            <input label='upload file' type='file' onChange={this.handleFileUpload} className='file-input' />
+            <div className='add-container'>
+               <button onClick={ (e) => this.props.history.push('/dashboard')} className='input-box-button' >Back</button>
+               <button type='submit' className='input-box-button'>Submit</button>
+   
+            </div>
+            </form>
+            ) : 
+            
+            < Circle />
+         }
+      </div>
+      
+      
    );
 }
 }
