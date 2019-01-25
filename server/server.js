@@ -9,10 +9,13 @@ const fs = require('fs');
 const fileType = require('file-type');
 const bluebird = require('bluebird');
 const multiparty = require('multiparty');
+const path = require('path');
 
 const { SERVER_PORT, CONNECTION_STRING, SECRET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, S3_BUCKET } = process.env;
 
 const app = express();
+
+app.use( express.static( `${__dirname}/../build` ) );
 
 //MIDDLEWARE
 app.use(express.json());
@@ -93,6 +96,9 @@ app.post('/upload', (request, response) => {
    });
 });
 
+app.get('*', (req, res)=>{
+   res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 //NOTE
 // IT IS BAD CONVENTION TO USE PLURALS IN ENDPOINT URLS. NEXT TIME, DON'T PUT MILESTONES, BUT RATHER MILESTONE. ALSO THERE IS NO NEED FOR /ADD OR /EDIT, THE ACTION IS IMPLIED BY THE .POST OR .PUT REQUESTS. 
