@@ -59,20 +59,22 @@ class AddMilestone extends Component {
                <div className='input-box' >
                   <TextField
                   id="title"
-                  label="Title"
+                  label="Title (max 50 char.)"
                   value={this.state.titleInput}
                   onChange={ (e) => this.setState({title: e.target.value}) }
                   margin="normal"
                   autoFocus={true}
                   onKeyPress={this.onKeyPress}
+                  className='input-field'
                   />
                   <TextField
                   id="description"
-                  label="Description"
+                  label="Description (max 50 char.)"
                   value={this.state.descriptionInput}
                   onChange={ (e) => this.setState({description: e.target.value}) }
                   margin="normal"
                   onKeyPress={this.onKeyPress}
+                  className='input-field'
                   />
                   <TextField
                   id="location"
@@ -81,6 +83,7 @@ class AddMilestone extends Component {
                   onChange={ (e) => this.setState({location: e.target.value}) }
                   margin="normal"
                   onKeyPress={this.onKeyPress}
+                  className='input-field'
                   />
                   <DatePicker
                   id="date"
