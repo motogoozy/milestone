@@ -94,14 +94,14 @@ class Register extends Component {
                   onKeyPress={this.onKeyPress}
                   className='input-field'
                />
-               <TextField
+               {/* <TextField
                   label="Profile Picture URL"
                   value={this.state.profile_pic}
                   onChange={ (e) => this.setState({profile_pic: e.target.value}) }
                   margin="normal"
                   onKeyPress={this.onKeyPress}
                   className='input-field'
-               />
+               /> */}
                <div>
                   <button onClick={() => this.props.history.push('/')} className='input-box-button' >Back</button>
                   <button onClick={() => this.register()} className='input-box-button' >Submit</button>
