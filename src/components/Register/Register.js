@@ -27,6 +27,12 @@ class Register extends Component {
             title: 'Oops!',
             text: 'Please enter a password.'
          })
+      } else if (username.length > 20) {
+         await Swal({
+            type: 'warning',
+            title: 'Oops!',
+            text: 'Username must not exceed 20 characters.'
+         })
       } else {
          const res = await axios.post(`/auth/register`, { username: username, password: password, profile_pic: profile_pic })
          if (res.data.loggedIn) {
@@ -70,12 +76,13 @@ class Register extends Component {
             <div className='register-menu'>
                <h2 className='register-text'>Sign Up</h2>
                <TextField
-                  label="Create a Username"
+                  label="Create a Username (max 20 char.)"
                   value={this.state.username}
                   onChange={ (e) => this.setState({username: e.target.value}) }
                   margin="normal"
                   autoFocus={true}
                   onKeyPress={this.onKeyPress}
+                  className='input-field'
                />
                <TextField
                   id="standard-password-input"
@@ -85,6 +92,7 @@ class Register extends Component {
                   margin="normal"
                   type="password"
                   onKeyPress={this.onKeyPress}
+                  className='input-field'
                />
                <TextField
                   label="Profile Picture URL"
@@ -92,6 +100,7 @@ class Register extends Component {
                   onChange={ (e) => this.setState({profile_pic: e.target.value}) }
                   margin="normal"
                   onKeyPress={this.onKeyPress}
+                  className='input-field'
                />
                <div>
                   <button onClick={() => this.props.history.push('/')} className='input-box-button' >Back</button>
