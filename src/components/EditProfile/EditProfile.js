@@ -98,13 +98,11 @@ class EditProfile extends Component {
                   <form onSubmit={this.handleProfileChange} className='form'>
                   <h4 className='change-text'>Change Profile Picture:</h4>
                      <input label='upload file' type='file' onChange={this.handleFileUpload} className='file-input' />
-                     <div className='add-container'>
+                     <div className='button-container'>
                         <button onClick={ (e) => this.props.history.push('/dashboard')} className='input-box-button' >Back</button>
                         <button type='submit' className='input-box-button'>Submit</button>
                      </div>
                   </form>
-                  <div className='add-button-container'>
-                  </div>
                </div>
             </div>
          </div>

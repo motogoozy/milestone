@@ -102,7 +102,7 @@ class Register extends Component {
                   onKeyPress={this.onKeyPress}
                   className='input-field'
                /> */}
-               <div>
+               <div className='button-container'>
                   <button onClick={() => this.props.history.push('/')} className='input-box-button' >Back</button>
                   <button onClick={() => this.register()} className='input-box-button' >Submit</button>
                </div>

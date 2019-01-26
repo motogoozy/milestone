@@ -139,8 +139,8 @@ class Card extends Component {
                         onKeyPress={this.onKeyPress}
                         />
                         <div className='button-container'>
-                           <button onClick={ (e) => this.setState({ toggleEdit: false }) } className='edit-menu-button' >Cancel</button>
-                           <button onClick={() => this.handleEdit()} className='edit-menu-button' >Submit</button>
+                           <button onClick={ (e) => this.setState({ toggleEdit: false }) } className='input-box-button' >Cancel</button>
+                           <button onClick={() => this.handleEdit()} className='input-box-button' >Submit</button>
                         </div>
                      </div>
                   </div>

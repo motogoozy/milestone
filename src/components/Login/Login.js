@@ -85,8 +85,10 @@ class Login extends Component {
                   onKeyPress={this.onKeyPress}
                />
                <div>
-                  <button onClick={ () => this.props.history.push('/')} className='input-box-button'>Back</button>
-                  <button onClick={ () => this.login() } className='input-box-button' >Submit</button>
+                  <div className='button-container'>
+                     <button onClick={ () => this.props.history.push('/')} className='input-box-button'>Back</button>
+                     <button onClick={ () => this.login() } className='input-box-button' >Submit</button>
+                  </div>
                </div>
             </div>
          </div>

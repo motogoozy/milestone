@@ -26,14 +26,30 @@ $primary-background-color: #FFFFFF;
    height: $button-height;
    margin: 25px 10px 0 10px;
    border-radius: 25px;
-   background-color: rgb(243, 243, 243);
-   box-shadow: $box-shadow;
+   background-color: rgb(255, 255, 255);
+   font-size: 11px;
    font-family: $font-family;
    color: $primary-text-color;
+   box-shadow: $box-shadow;
    letter-spacing: 1px;
    text-transform: uppercase;
    font-weight: bold;
-   padding-left: 8px;
+   display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+   align-content: center;
+   border: 1px rgb(85, 83, 83) solid;
+}
+
+.button-container {
+   display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
 }
 
 //MEDIA QUERIES

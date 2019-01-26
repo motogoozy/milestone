@@ -45,6 +45,16 @@
    font-size: 23px;
 }
 
+.button-container {
+   display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: center;
+   align-content: center;
+   margin: 0;
+}
+
 /* MEDIA QUERIES */
 
 //iPhone X / 8 Plus / 8

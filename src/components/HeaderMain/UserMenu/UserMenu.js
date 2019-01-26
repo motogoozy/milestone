@@ -26,8 +26,8 @@ class UserMenu extends React.Component {
       this.props.history.push('/edit-profile')
    }
 
-   logout = async () => {
-      await axios.get('/auth/logout')
+   logout = () => {
+      axios.get('/auth/logout')
       const toast = Swal.mixin({
          toast: true,
          position: 'center',
