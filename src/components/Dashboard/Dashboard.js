@@ -59,17 +59,35 @@ class Dashboard extends Component {
    handleSortToggle = () => {
       this.setState({ sortAsc: !this.state.sortAsc }, () => this.getMilestones()) //setState can take a callback function as a second parameter.
    }
-
    // THIS ALSO WORKS:
    // handleSortToggle = async () => {
    //    const res = await this.setState({sortAsc: !this.state.sortAsc})
    //    this.getMilestones()
    // }
 
-   handleDelete = async (milestone_id) => {
-      const response = await axios.delete(`/api/milestones/delete/${milestone_id}`)
-      console.log(response.data.message);
-      this.getMilestones();
+   
+   handleDelete = (milestone_id) => {
+      Swal.fire({
+         title: 'Are you sure?',
+         text: "You won't be able to revert this!",
+         type: 'warning',
+         showCancelButton: true,
+         confirmButtonColor: '#3085d6',
+         cancelButtonColor: '#d33',
+         confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+         if (result.value) {
+            axios.delete(`/api/milestones/delete/${milestone_id}`).then(
+               this.getMilestones()
+            ).then(
+               Swal.fire(
+                  'Deleted!',
+                  'Your file has been deleted.',
+                  'success'
+               )
+            )
+         }
+      })
    }
 
 
