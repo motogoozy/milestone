@@ -50,13 +50,12 @@ render () {
       <div>
          {
             !this.state.loading ? (
-               <form onSubmit={this.submitFile} className='form'>
-            <input label='upload file' type='file' onChange={this.handleFileUpload} className='file-input' />
-            <div className='button-container'>
-               <button onClick={ (e) => this.props.history.push('/dashboard')} className='input-box-button' >Back</button>
-               <button type='submit' className='input-box-button'>Submit</button>
-   
-            </div>
+            <form onSubmit={this.submitFile} className='form'>
+               <input label='upload file' type='file' onChange={this.handleFileUpload} className='file-input' />
+               <div className='button-container'>
+                  <button onClick={ (e) => this.props.history.push('/dashboard')} className='input-box-button' >Back</button>
+                  <button type='submit' className='input-box-button'>Submit</button>
+               </div>
             </form>
             ) : 
 
