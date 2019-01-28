@@ -43,11 +43,6 @@ class Card extends Component {
       console.log(response.data.message)
    }
 
-   // async handleDelete(milestone_id) {
-   //    const response = await axios.delete(`/api/milestones/delete/${milestone_id}`)
-   //    console.log(response.data.message);
-   // }
-
    handleDateChange = (date) => {
       this.setState({date: date})
    }
@@ -56,7 +51,6 @@ class Card extends Component {
    render () {
       const { title, description, date, location, img, milestone_id } = this.state
       const googleMapsURL = `https://www.google.com/maps/place/${location}`;
-      console.log(date)
 
 
       return (
