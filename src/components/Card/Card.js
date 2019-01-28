@@ -69,7 +69,13 @@ class Card extends Component {
             </div>
 
             <div className='image-container' >
-               <img src={img} alt="" className='img'/>
+               {
+                  img.indexOf('.mov') !== -1 && window.outerWidth > 400 ? 
+                  <video autoPlay width="100%" controls src={img}>
+                  </video>
+                  : 
+                  <img src={img} alt="" className='img'/>
+               }
             </div>
 
             <div className='description-container' >
