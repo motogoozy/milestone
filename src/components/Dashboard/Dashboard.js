@@ -75,18 +75,14 @@ class Dashboard extends Component {
          confirmButtonColor: '#3085d6',
          cancelButtonColor: '#d33',
          confirmButtonText: 'Yes, delete it!'
-      }).then((result) => {
+      }).then( async (result) => {
          if (result.value) {
-            axios.delete(`/api/milestones/delete/${milestone_id}`)
-            .then(
-               Swal.fire(
-                  'Deleted!',
-                  'Your file has been deleted.',
-                  'success'
-               )
-            )
-            .then(
-               this.getMilestones()
+            await axios.delete(`/api/milestones/delete/${milestone_id}`);
+            await this.getMilestones();
+            Swal.fire(
+               'Deleted!',
+               'Your file has been deleted.',
+               'success'
             )
          }
       })
