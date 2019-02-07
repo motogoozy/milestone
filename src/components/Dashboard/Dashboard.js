@@ -77,14 +77,16 @@ class Dashboard extends Component {
          confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
          if (result.value) {
-            axios.delete(`/api/milestones/delete/${milestone_id}`).then(
-               this.getMilestones()
-            ).then(
+            axios.delete(`/api/milestones/delete/${milestone_id}`)
+            .then(
                Swal.fire(
                   'Deleted!',
                   'Your file has been deleted.',
                   'success'
                )
+            )
+            .then(
+               this.getMilestones()
             )
          }
       })
