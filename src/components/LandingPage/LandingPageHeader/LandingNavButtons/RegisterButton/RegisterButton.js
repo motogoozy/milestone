@@ -11,11 +11,14 @@ const styles = theme => ({
    signInButton: {
       margin: '0px',
       backgroundColor: 'teal',
+      '&:hover': {
+         backgroundColor: '#D89540'
+      },
       width: '117px',
       height: '40px',
       borderRadius: '35px',
       fontSize: '16px',
-      letterSpacing: '1.5px'
+      letterSpacing: '1.5px',
    },
 });
 
