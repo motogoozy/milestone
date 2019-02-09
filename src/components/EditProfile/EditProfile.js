@@ -51,7 +51,7 @@ class EditProfile extends Component {
             if(this.state.username.length < 1) {
                alert('Username cannot Please enter a username')
             } else {
-               const res = axios.put('/api/userData/edit', { username, profile_pic: img, user_id })
+               const res = axios.put('/api/userData', { username, profile_pic: img, user_id })
                console.log(res);
             }
             this.props.history.push('/dashboard')
@@ -64,7 +64,7 @@ class EditProfile extends Component {
          if(this.state.username.length < 1) {
             alert('Username cannot Please enter a username')
          } else {
-            const res = await axios.put('/api/userData/edit', { username, profile_pic, user_id })
+            const res = await axios.put('/api/userData', { username, profile_pic, user_id })
             console.log(res);
          }
          this.props.history.push('/dashboard')
