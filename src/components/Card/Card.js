@@ -38,7 +38,7 @@ class Card extends Component {
    async handleEdit() {
       const { milestone_id } = this.state;
       const { title, description, date, location, img } = this.state;
-      const response = await axios.put('/api/milestone/edit', {milestone_id, title, description, date, location, img })
+      const response = await axios.put('/api/milestone', {milestone_id, title, description, date, location, img })
       this.setState({toggleEdit: false})
       console.log(response.data.message)
    }

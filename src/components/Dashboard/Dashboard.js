@@ -77,7 +77,7 @@ class Dashboard extends Component {
          confirmButtonText: 'Yes, delete it!'
       }).then( async (result) => {
          if (result.value) {
-            await axios.delete(`/api/milestones/delete/${milestone_id}`);
+            await axios.delete(`/api/milestone/${milestone_id}`);
             await this.getMilestones();
             Swal.fire(
                'Deleted!',

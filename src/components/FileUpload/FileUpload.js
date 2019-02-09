@@ -26,7 +26,7 @@ submitFile = (event) => {
       }).then(response => {
          const body = {...this.props.state}; //Making a new copy of this.state from the Dashboard component. Does not alter Dashboard's state. 
          body.img = response.data.Location;
-         axios.post('/api/milestones/add', body).then(
+         axios.post('/api/milestone', body).then(
             this.props.history.push('/dashboard')
          )
       }).catch(error => {
@@ -34,7 +34,7 @@ submitFile = (event) => {
       });
    } else {
       const body = {...this.props.state};
-      axios.post('/api/milestones/add', body).then(
+      axios.post('/api/milestone', body).then(
          this.setState({loading: false}),
          this.props.history.push('/dashboard')
       )
