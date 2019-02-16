@@ -44,11 +44,9 @@ class Dashboard extends Component {
       if(this.state.sortAsc === false) {
          const response = await axios.get(`/api/milestones`)
          this.setState({ milestones: response.data })
-         console.log(response.data)
       } else {
          const response = await axios.get(`/api/milestones-asc`)
          this.setState({ milestones: response.data })
-         console.log(response.data)
       }
    }
 
