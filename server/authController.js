@@ -24,11 +24,11 @@ module.exports = {
 
       const userArr = await db.find_user({ username: username });
       if(!userArr[0]) {
-         return res.status(401).send({ message: 'User not found.' })
+         return res.status(200).send({ message: 'User not found.' })
       }
       const result = bcrypt.compareSync(password, userArr[0].hash)
       if (!result) { //if result is falsy, passwords don't match up
-         return res.status(401).send({ message: 'Incorrect password.' })
+         return res.status(200).send({ message: 'Incorrect password.' })
       }
       req.session.user = { user_id: userArr[0].user_id, username: userArr[0].username, profile_pic: userArr[0].profile_pic };
       res.status(200).send({ message: 'logged in', userData: req.session.user, loggedIn: true })
