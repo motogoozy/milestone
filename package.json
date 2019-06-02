@@ -44,5 +44,20 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
+<<<<<<< HEAD
+=======
+  ],
+  "devDependencies": {
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "enzyme-to-json": "^3.3.5"
+  },
+  "jest": {
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
+  },
+  "setupFiles": [
+    "<rootDir>/config/polyfills.js",
+    "<rootDir>/src/setupTests.js"
+>>>>>>> 13048d3fe0c663ad65ee4ade9d09f43c3e65228e
   ]
 }
